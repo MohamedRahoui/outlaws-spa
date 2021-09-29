@@ -1,5 +1,5 @@
 FROM nginx:stable-alpine as production-stage
-COPY ./build /var/www
+COPY ./build/ /var/www
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 ENTRYPOINT ["nginx","-g","daemon off;"]
