@@ -1,0 +1,79 @@
+@import '../../theme/vars.scss';
+.container {
+  margin-top: $desktop-spacing;
+  background-color: white;
+  border-radius: $border-radius;
+  display: flex;
+  min-height: 400px;
+  @include base-container;
+  .leftSide {
+    height: 100%;
+    flex: 1;
+    background-image: url('../../../assets/img/login-bg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+  .rigthSide {
+    color: $dark;
+    height: 100%;
+    flex: 1;
+    min-width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .rightContent {
+      width: 400px;
+      max-width: 100%;
+      .heading {
+        font-size: $text-heading;
+        font-weight: 500;
+        margin-bottom: $desktop-spacing;
+        .redText {
+          color: $primary-color;
+        }
+      }
+      p {
+        color: $text-light-color;
+        font-size: $text-small;
+        line-height: $text-small * 1.5;
+        small {
+          font-size: $text-small * 0.8;
+          color: rgba($color: $primary-color, $alpha: 0.7);
+
+          line-height: $text-small * 1.5;
+        }
+      }
+      .loginDivider {
+        display: block;
+        margin-top: calc($desktop-spacing * 0.7);
+        margin-bottom: $desktop-spacing * 1.5;
+      }
+      .buttons {
+        margin-top: $desktop-spacing;
+        .loginBtn {
+          &:not(:first-of-type) {
+            margin-left: $desktop-spacing;
+          }
+          cursor: pointer;
+          border-radius: 100%;
+          width: 70px;
+          height: 70px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          display: inline-flex;
+          &:active {
+            box-shadow: none;
+          }
+          img {
+            height: 60px;
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+}

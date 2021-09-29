@@ -1,0 +1,23 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  display: flex;
+  box-sizing: border-box;
+  .mainText {
+    align-self: center;
+    padding-left: calc($logo-size / 2);
+    width: 450px;
+    max-width: 90%;
+    font-size: $text-regular + 3;
+    line-height: $text-regular + 7;
+    h1 {
+      font-size: $text-heading + 5;
+      line-height: $text-heading + 9;
+      @include text-bold;
+    }
+  }
+  .fist {
+    margin-left: auto;
+    margin-right: -$desktop-spacing;
+  }
+}

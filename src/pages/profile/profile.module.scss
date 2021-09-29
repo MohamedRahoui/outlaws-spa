@@ -1,0 +1,96 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  @include base-container;
+  margin-top: $desktop-spacing;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .userCard {
+    background-color: white;
+    color: $dark;
+    margin-left: -$desktop-spacing;
+    margin-right: -$desktop-spacing;
+    width: calc(100% + $desktop-spacing * 2);
+    @include phone {
+      margin-left: -$mobile-spacing;
+      margin-right: -$mobile-spacing;
+      width: calc(100% + $mobile-spacing * 2);
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .content {
+      height: auto;
+      width: 700px;
+      max-width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: $desktop-spacing;
+      padding-bottom: $desktop-spacing;
+      .avatarWrapper {
+        flex: 1 0 25%;
+        max-width: 25%;
+        .avatar {
+          width: 150px;
+          height: 150px;
+          display: block;
+          margin: auto;
+        }
+      }
+      .infoWrapper {
+        flex: 1 0 70%;
+        max-width: 70%;
+        .info {
+          flex-direction: column;
+          display: flex;
+          gap: $desktop-spacing;
+          padding-top: $desktop-spacing;
+          .name {
+            font-size: $text-heading;
+            font-weight: 500;
+          }
+          .email {
+            @include text-light;
+          }
+          .linkWrapper {
+            border-radius: $border-radius;
+            min-width: 0;
+            .link {
+              align-items: center;
+              display: flex;
+              .LinkText {
+                font-size: $text-small;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                @include text-bold;
+                text-decoration: underline;
+                cursor: pointer;
+              }
+              .copy {
+                width: 150px;
+              }
+            }
+            .shareArrow {
+              margin-left: auto;
+              margin-right: 40px;
+              margin-top: -$desktop-spacing - 5px;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    .ShareText {
+      width: 100%;
+      text-align: center;
+      margin-top: -$desktop-spacing;
+    }
+  }
+}

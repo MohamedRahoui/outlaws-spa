@@ -1,0 +1,46 @@
+@import '../../theme/vars.scss';
+
+.footer {
+  box-sizing: border-box;
+  height: 150px;
+  margin-top: $desktop-spacing;
+  font-size: $text-small;
+  flex: none;
+  .divider {
+    height: 1px;
+    background: #cfcfcf;
+  }
+  .content {
+    padding-top: $desktop-spacing;
+    display: flex;
+    justify-content: space-between;
+    height: calc(100% - 1px);
+    .madeBy {
+      display: flex;
+      align-items: flex-start;
+      .heartIcon {
+        margin: -5px 5px 0 5px;
+      }
+      .rhaszare {
+        text-decoration: underline;
+        margin-left: 5px;
+      }
+    }
+    .collectif {
+      .socials {
+        margin-top: $desktop-spacing;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .stop490 {
+      b {
+        vertical-align: top;
+      }
+      img {
+        margin-top: -7px;
+        margin-right: 5px;
+      }
+    }
+  }
+}

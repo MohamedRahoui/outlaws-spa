@@ -1,0 +1,19 @@
+@import '../../theme/vars.scss';
+.avatarWrapper {
+  margin-left: auto;
+  .avatarBtn {
+    background-color: $primary-color !important;
+    width: 60px !important;
+    height: 60px !important;
+    cursor: pointer;
+  }
+  .avatarBadge {
+    background-color: $primary-color;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    cursor: pointer;
+  }
+}

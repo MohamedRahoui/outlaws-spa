@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Cairo&display=swap');
+@import 'vars.scss';
+@import 'reset.scss';
+@import '../../node_modules/filepond/dist/filepond.min.css';
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+.globalWrap {
+  background-color: $dark;
+  color: $text-color;
+  @include base-padding;
+  font-family: $font-family;
+  font-size: $text-regular;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  .container {
+    padding-top: $desktop-spacing;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.filepond--credits {
+  display: none;
+}

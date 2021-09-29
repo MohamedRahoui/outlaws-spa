@@ -1,0 +1,58 @@
+$dark: #151516;
+$primary-color: #f31800;
+$text-color: white;
+$screen-desktop: 992px;
+$desktop-spacing: 30px;
+$mobile-spacing: 10px;
+$font-family: 'Roboto', sans-serif;
+$text-heading: 34px;
+$text-regular: 18px;
+$text-small: 16px;
+$logo-size: 90px;
+$border-radius: 10px;
+$text-light-color: #747474;
+
+@mixin phone {
+  @media (max-width: #{$screen-desktop - 1px}) {
+    @content;
+  }
+}
+@mixin base-container {
+  flex: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@mixin base-padding {
+  box-sizing: border-box;
+  padding: $desktop-spacing;
+  @include phone {
+    padding: $mobile-spacing;
+  }
+}
+
+@mixin spacing($property) {
+  #{$property}: $desktop-spacing;
+  @include phone {
+    #{$property}: $mobile-spacing;
+  }
+}
+
+@mixin base-heading {
+  font-size: $text-heading;
+  @include text-bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: $desktop-spacing;
+  @include phone {
+    margin-bottom: $mobile-spacing;
+  }
+}
+
+@mixin text-bold {
+  font-weight: 500;
+}
+
+@mixin text-light {
+  font-weight: 300;
+}
