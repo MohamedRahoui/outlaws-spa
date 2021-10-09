@@ -1,8 +1,12 @@
 import { proxy } from 'valtio';
 import { getUser, logout, login } from '../helpers/user';
-import IStore from '../models/store';
+import { IPetitonStore, IStore } from '../models/store';
 
 const store = proxy<IStore>({
+  mobileNavOpen: false,
+  toggleMobileNav: () => {
+    store.mobileNavOpen = !store.mobileNavOpen;
+  },
   user: getUser() || null,
   login: (data) => {
     login(data);
@@ -14,4 +18,12 @@ const store = proxy<IStore>({
   },
 });
 
-export default store;
+const petitionsStore = proxy<IPetitonStore>({
+  petitions: [],
+  fetched: false,
+  setPetitions: (petitions) => {
+    petitionsStore.fetched = true;
+    petitionsStore.petitions = petitions || [];
+  },
+});
+export { store, petitionsStore };

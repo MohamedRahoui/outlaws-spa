@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSnapshot } from 'valtio';
 import { hasStaff } from '../helpers/user';
-import store from '../store';
+import { store } from '../store';
 import Routes from './routes';
 
 const StaffRoute = ({ children, ...rest }: any) => {

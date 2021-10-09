@@ -1,8 +1,10 @@
 import { Button, ButtonGroup } from '@mui/material';
 import ST from './home.module.scss';
 import Fist from '../../../assets/img/fist.png';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
+  const history = useHistory();
   return (
     <div className={ST.container}>
       <div className={ST.mainText}>
@@ -21,7 +23,9 @@ const Home = () => {
         <br />
         <br />
         <ButtonGroup variant='contained'>
-          <Button>Signer la pétition</Button>
+          <Button onClick={() => history.push('/petition')}>
+            Signer la pétition
+          </Button>
           <Button>Vote4Love</Button>
         </ButtonGroup>
       </div>

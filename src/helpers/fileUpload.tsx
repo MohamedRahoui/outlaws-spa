@@ -45,7 +45,7 @@ const FileUpload = ({
         name='files'
         labelIdle={innerLabel}
         acceptedFileTypes={['image/png', 'image/jpeg']}
-        maxFileSize='15MB'
+        maxFileSize='20MB'
         labelFileTypeNotAllowed='Que les images de type JPG ou PNG sont acceptés'
         labelMaxFileSize='La taille de chaque fichier ne doit dépasser 5MB'
         labelMaxFileSizeExceeded='Choisissez un fichier plus petit'
@@ -55,7 +55,7 @@ const FileUpload = ({
   );
 };
 
-const filesSizeCheck = (files: File[], size = 15): boolean => {
+const filesSizeCheck = (files: File[], size = 20): boolean => {
   if (!files || !files.length) return false;
   return files.every((file) => {
     const mb = file.size / 1024 / 1024;

@@ -4,7 +4,7 @@ import Outlaws from '../../../assets/img/outlaw.png';
 import { useHistory } from 'react-router-dom';
 import UserAvatar from '../userAvatar/userAvatar';
 import { useSnapshot } from 'valtio';
-import store from '../../store';
+import { store } from '../../store';
 import ST from './header.module.scss';
 import classNames from 'classnames/bind';
 

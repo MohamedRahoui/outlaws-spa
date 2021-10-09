@@ -1,8 +1,16 @@
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider, Box, Toolbar } from '@mui/material';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import RouterComponent from './router';
-import { SnackbarProvider } from 'notistack';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouteMatch } from 'react-router-dom';
+import { store } from './store';
+import { useSnapshot } from 'valtio';
+import { hasStaff } from './helpers/user';
+import StaffHeader from './components/staff/header/header';
+import StaffDrawer from './components/staff/drawer/drawer';
+
 let theme = createTheme({
   palette: {
     primary: {
@@ -22,16 +30,44 @@ let theme = createTheme({
     },
   },
 });
+let staffTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#f31800',
+    },
+    success: {
+      main: '#5cb85c',
+    },
+  },
+});
 function App() {
+  const staffPage = useRouteMatch({
+    path: '/staff',
+  });
+  const snap = useSnapshot(store);
+
+  if (hasStaff(snap.user) && staffPage)
+    return (
+      <ThemeProvider theme={staffTheme}>
+        <Box sx={{ display: 'flex' }}>
+          <StaffHeader />
+          <StaffDrawer/>
+          <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+            <Toolbar />
+            <RouterComponent />
+          </Box>
+          <ToastContainer />
+        </Box>
+      </ThemeProvider>
+    );
   return (
     <ThemeProvider theme={theme}>
-      <SnackbarProvider maxSnack={3}>
-        <div className='globalWrap'>
-          <Header />
-          <RouterComponent />
-          <Footer />
-        </div>
-      </SnackbarProvider>
+      <div className='globalWrap'>
+        <Header />
+        <RouterComponent />
+        <Footer />
+        <ToastContainer />
+      </div>
     </ThemeProvider>
   );
 }

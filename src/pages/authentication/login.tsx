@@ -4,48 +4,46 @@ import Divider from '../../../assets/img/underlining.svg';
 import FacebookLogin from '../../../assets/img/facebook-login.svg';
 import GoogleLg from '../../../assets/img/google-login.svg';
 import ILoginData from '../../models/login';
-import store from '../../store';
-import axios from 'axios';
+import { store } from '../../store';
 import GoogleLogin from 'react-google-login';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { useSnackbar } from 'notistack';
 import { useHistory } from 'react-router-dom';
-
+import Axios from '../../helpers/axios';
+import { toast } from 'react-toastify';
 const Login = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
   const responseGoogle = async (response: any) => {
     let recaptcha = '';
     if (executeRecaptcha) {
       recaptcha = await executeRecaptcha('googleAuth' as string);
     }
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/auth/google`, {
+    Axios.post(
+      `/auth/google`,
+      {
         googleToken: response.tokenId,
-        recaptcha,
-      })
-      .then((res) => {
-        const loginData: ILoginData = res.data;
-        store.login(loginData);
-        enqueueSnackbar(
-          `Bienvenue ${
-            loginData.user.firstName ||
-            loginData.user.lastName ||
-            loginData.user.email ||
-            ''
-          } !`,
-          {
-            variant: 'success',
-          }
-        );
-        history.push('/');
-      });
+      },
+      {
+        headers: {
+          'X-RECAPTCHA': recaptcha,
+        },
+      }
+    ).then((res) => {
+      const loginData: ILoginData = res.data;
+      store.login(loginData);
+      toast.success(
+        `Bienvenue ${
+          loginData.user.firstName ||
+          loginData.user.lastName ||
+          loginData.user.email ||
+          ''
+        } !`
+      );
+      history.push('/');
+    });
   };
   const GoogleAuthFailed = () => {
-    enqueueSnackbar('La connexion Google à échoué !', {
-      variant: 'error',
-    });
+    toast.error('La connexion Google à échoué !');
   };
   return (
     <div className={ST.container}>

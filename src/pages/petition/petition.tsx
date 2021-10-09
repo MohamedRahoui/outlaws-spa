@@ -1,6 +1,6 @@
 import { Grid, IconButton } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikValues, FormikHelpers } from 'formik';
 import ST from './petition.module.scss';
 import * as Yup from 'yup';
 import { MyFieldError, MyFieldLabel, MyTextField } from '../../helpers/form';
@@ -12,8 +12,15 @@ import {
   FileUpload,
 } from '../../helpers/fileUpload';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Axios from '../../helpers/axios';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { toast } from 'react-toastify';
 
 const Petition = () => {
+  const { userId } = useParams<{ userId?: string }>();
+  const [signCanvas, setSignCanvas] = useState<any>(null);
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const formValidation = Yup.object({
     firstname: Yup.string()
       .max(40, 'Votre Pénom ne peut pas dépasser 40 caractères')
@@ -49,20 +56,23 @@ const Petition = () => {
       .required('Votre carte didentité est requise (Recto et Verso)')
       .test(
         'file-size',
-        'La taille des images ne doit pas depasser 15MB',
-        (value: any) => filesSizeCheck(value, 15)
+        'La taille des images ne doit pas depasser 20MB',
+        (value: any) => filesSizeCheck(value, 20)
       )
       .test(
         'file-type',
         'Les images doivent être de type PNG ou JPG',
         (value: any) => filesTypeCheck(value, ['image/png', 'image/jpeg'])
       ),
-    signature: Yup.string().required('Votre Signature manuscrite est requise'),
+    signature: Yup.mixed().test(
+      'signed',
+      'Votre Signature manuscrite est requise',
+      () => !signCanvas.isEmpty()
+    ),
   });
-  const [signCanvas, setSignCanvas] = useState<any>(null);
   return (
     <div className={ST.container}>
-      <div className={ST.heading}>Pétition</div>
+      <div className={ST.heading}>Pétition </div>
       <div className={ST.petitionText}>
         <p>
           اعتبارا لما نص عليه الدستور المغربي من التزام بالعمل على منظومتي حقوق
@@ -90,13 +100,55 @@ const Petition = () => {
           address: '',
           cin: '',
           electoral_number: '',
-          identity_card: [],
+          identity_card: [] as any,
           signature: '',
         }}
         validationSchema={formValidation}
-        onSubmit={(values, { setSubmitting, setErrors, resetForm }) => {
-          console.log(values);
-          setSubmitting(false);
+        onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
+          setSubmitting(true);
+          let recaptcha = '';
+          if (executeRecaptcha) {
+            recaptcha = await executeRecaptcha('SignPetition' as string);
+          }
+          const formData = new FormData();
+          const userIdValidation = Yup.string().uuid().required();
+          const userIdIsValid = await userIdValidation.isValid(userId);
+          if (userIdIsValid && userId) {
+            formData.append('user_id', userId);
+          }
+          for (const [key, value] of Object.entries(values)) {
+            if (key === 'identity_card') {
+              const files = value as any[];
+              files.forEach((file, i) => {
+                formData.append(`${key}_${i + 1}`, file);
+              });
+            } else if (key === 'signature') {
+              const file = new File([value], 'signature.png', {
+                type: 'image/png',
+              });
+              formData.append('signature', file);
+            } else {
+              formData.append(key, value);
+            }
+          }
+          Axios.post('/petitions', formData, {
+            headers: {
+              'X-RECAPTCHA': recaptcha,
+            },
+          })
+            .then(() => {
+              resetForm();
+              window.scrollTo(0, 0);
+              toast.success('Félicitation vous venez de signez la pétition');
+              setSubmitting(false);
+            })
+            .catch((errors) => {
+              const res = errors.response;
+              if (res.status === 422 && res.data) {
+                setErrors(res.data);
+              }
+              setSubmitting(false);
+            });
         }}
       >
         {({ isSubmitting, values, setFieldValue, errors }) => (
@@ -148,11 +200,19 @@ const Petition = () => {
                     penColor='black'
                     canvasProps={{
                       className: ST.sigCanvas,
-                      onMouseUp: () => {
-                        setFieldValue(
-                          'signature',
-                          signCanvas.getTrimmedCanvas().toDataURL('image/png')
-                        );
+                      onMouseUp: async () => {
+                        if (!signCanvas.isEmpty()) {
+                          await signCanvas.getCanvas().toBlob((blob: any) => {
+                            setFieldValue('signature', blob);
+                          });
+                        }
+                      },
+                      onTouchEnd: async () => {
+                        if (!signCanvas.isEmpty()) {
+                          await signCanvas.getCanvas().toBlob((blob: any) => {
+                            setFieldValue('signature', blob);
+                          });
+                        }
                       },
                     }}
                     ref={(ref: any) => {

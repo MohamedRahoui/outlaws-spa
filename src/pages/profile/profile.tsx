@@ -1,6 +1,6 @@
 import ST from './profile.module.scss';
 import { useHistory } from 'react-router-dom';
-import store from '../../store';
+import { store } from '../../store';
 import { useSnapshot } from 'valtio';
 import { getFullNameEmail } from '../../helpers/user';
 import { Alert, Avatar, Button } from '@mui/material';

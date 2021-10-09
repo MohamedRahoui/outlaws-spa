@@ -1,9 +1,19 @@
 import ILoginData from '../models/login';
 import IUser from '../models/user';
 
+const getRefreshToken = () => {
+  const outlawsData = localStorage.getItem('outlawsData') || '';
+  if (!outlawsData) return null;
+  return outlawsData;
+};
+
+const setToken = (outlaws: string) => {
+  localStorage.setItem('outlaws', outlaws);
+};
+
 const getToken = () => {
   const outlaws = localStorage.getItem('outlaws') || '';
-  const outlawsData = localStorage.getItem('outlawsData') || '';
+  const outlawsData = getRefreshToken();
   if (!outlaws || !outlawsData) return null;
   return outlaws;
 };
@@ -42,4 +52,14 @@ const getFullNameEmail = (user: IUser | null) => {
   return `${user.firstName} ${user.lastName}`;
 };
 
-export { getUser, hasStaff, logout, login, userName, getFullNameEmail };
+export {
+  getUser,
+  hasStaff,
+  logout,
+  login,
+  userName,
+  getFullNameEmail,
+  getToken,
+  setToken,
+  getRefreshToken,
+};
