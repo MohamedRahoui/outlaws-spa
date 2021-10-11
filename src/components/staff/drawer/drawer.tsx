@@ -6,9 +6,9 @@ import {
   ListItemIcon,
   ListItemText,
   List,
-  SvgIconTypeMap,
 } from '@mui/material';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 // import ST from './drawer.module.scss';
 import { useSnapshot } from 'valtio';
 import { store } from '../../../store';
@@ -43,6 +43,11 @@ const DrawerContent = () => {
       label: 'Pétitions',
       Icon: <ListAltIcon />,
     },
+    {
+      path: '/staff/volunteers',
+      label: 'Bénévoles',
+      Icon: <VolunteerActivismIcon />,
+    },
   ];
   return (
     <Box sx={{ overflow: 'auto' }}>
@@ -67,7 +72,6 @@ const StaffDrawer = () => {
     <Box
       component='nav'
       sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-      aria-label='mailbox folders'
     >
       <Drawer
         // container={container}

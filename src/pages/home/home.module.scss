@@ -3,6 +3,9 @@
   @include base-container;
   display: flex;
   box-sizing: border-box;
+  @include phone {
+    display: none;
+  }
   .mainText {
     align-self: center;
     padding-left: calc($logo-size / 2);
@@ -19,5 +22,55 @@
   .fist {
     margin-left: auto;
     margin-right: -$desktop-spacing;
+  }
+}
+.mobileContainer {
+  display: none;
+  @include base-container;
+  @include base-padding;
+  @include phone {
+    display: flex;
+  }
+  flex-direction: column;
+  gap: 30px;
+  .mainText {
+    font-size: $text-small;
+    @include text-light;
+    h1 {
+      font-size: $text-regular;
+      @include text-bold;
+    }
+    p {
+      line-height: $text-small * 1.5;
+    }
+  }
+  .mobileActions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .mobileAction {
+      height: 100px;
+      background: url('../../../assets/img/sign-btn-bg.svg') no-repeat 50%;
+      background-size: cover;
+      border-radius: $border-radius;
+      @include base-padding;
+      padding-left: 30px !important;
+      position: relative;
+      img {
+        height: 100%;
+      }
+      .label {
+        position: absolute;
+        right: $mobile-spacing;
+        bottom: $mobile-spacing;
+        margin-left: $mobile-spacing;
+        background: $dark;
+        font-size: $text-small * 0.7;
+        padding: 4px 12px;
+        border-radius: 13px;
+        @include text-bold;
+      }
+    }
   }
 }

@@ -20,6 +20,10 @@ interface IFileInputs {
   setFieldValue: any;
   label: string;
   innerLabel: string;
+  maxFiles?: number;
+  types?: string[];
+  maxSize?: string;
+  typesMessage?: string;
 }
 
 const FileUpload = ({
@@ -28,6 +32,10 @@ const FileUpload = ({
   setFieldValue,
   label,
   innerLabel,
+  maxFiles,
+  types,
+  maxSize,
+  typesMessage,
 }: IFileInputs) => {
   const [field, meta] = useField<any>(fieldName);
   const errorText = meta.error && meta.touched ? meta.error : '';
@@ -41,13 +49,21 @@ const FileUpload = ({
           setFieldValue(fieldName, filesList);
         }}
         allowMultiple={true}
-        maxFiles={2}
+        maxFiles={maxFiles || 2}
         name='files'
         labelIdle={innerLabel}
-        acceptedFileTypes={['image/png', 'image/jpeg']}
-        maxFileSize='20MB'
-        labelFileTypeNotAllowed='Que les images de type JPG ou PNG sont acceptés'
-        labelMaxFileSize='La taille de chaque fichier ne doit dépasser 5MB'
+        acceptedFileTypes={types || ['image/png', 'image/jpeg']}
+        maxFileSize={maxSize || '20MB'}
+        labelFileTypeNotAllowed={
+          typesMessage
+            ? `Que les fichiers de type ${typesMessage} sont acceptés`
+            : 'Que les images de type JPG ou PNG sont acceptés'
+        }
+        labelMaxFileSize={
+          maxSize
+            ? `La taille de chaque fichier ne doit dépasser ${maxSize}`
+            : 'La taille de chaque fichier ne doit dépasser 20MB'
+        }
         labelMaxFileSizeExceeded='Choisissez un fichier plus petit'
       />
       {errorText && <MyFieldError error={errorText} />}

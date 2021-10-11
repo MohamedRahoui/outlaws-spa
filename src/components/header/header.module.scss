@@ -1,30 +1,48 @@
 @import '../../theme/vars.scss';
-.header {
-  display: flex;
-  align-items: center;
-  flex: none;
-  .logo {
-    width: $logo-size;
-    cursor: pointer;
-  }
-  .menu {
+.headerWrapper {
+    margin-bottom: 30px;
+  .header {
     display: flex;
-    gap: $desktop-spacing;
-    flex-wrap: wrap;
-    margin-left: $desktop-spacing * 2;
-    .menuItem {
-      @include text-bold;
-      text-transform: uppercase;
+    align-items: center;
+    flex: none;
+    .logo {
+      width: $logo-size;
       cursor: pointer;
-      &:hover {
-        color: rgba($color: $primary-color, $alpha: 0.6);
-      }
-      &.active {
-        color: $primary-color;
+      @include phone {
+        width: $logo-mobile-size;
       }
     }
+    .menu {
+      display: flex;
+      gap: $desktop-spacing;
+      flex-wrap: wrap;
+      margin-left: $desktop-spacing * 2;
+      @include phone {
+        display: none;
+      }
+      .menuItem {
+        @include text-bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:hover {
+          color: rgba($color: $primary-color, $alpha: 0.6);
+        }
+        &.active {
+          color: $primary-color;
+        }
+      }
+    }
+    .auth {
+      margin-left: auto;
+    }
   }
-  .auth {
-    margin-left: auto;
+  .backHome {
+    margin: auto;
+    display: none;
+    width: 100%;
+    margin-top: 30px;
+    @include phone {
+      display: flex;
+    }
   }
 }

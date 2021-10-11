@@ -26,6 +26,11 @@ const Footer = () => {
           <b>#STOP490</b>
         </div>
       </div>
+      <div className='madeByMobile'>
+          Made with <FavoriteIcon className='heartIcon' color='primary' /> by
+          <b className='rhaszare'
+          > Rhaszare</b>
+        </div>
     </div>
   );
 };

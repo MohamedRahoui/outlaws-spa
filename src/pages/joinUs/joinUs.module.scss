@@ -1,0 +1,59 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  max-width: 100%;
+  margin: auto;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .subHeading {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: #cfcfcf;
+    font-size: $text-regular + 3;
+    @include text-light;
+    @include phone {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  .blocks {
+    display: flex;
+    gap: 50px;
+    @include phone {
+      gap: 30px;
+    }
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    .block {
+      flex-basis: 250px;
+      min-width: 250px;
+      min-height: 250px;
+      @include phone {
+        flex-basis: 150px;
+        min-width: 150px;
+        min-height: 150px;
+      }
+      border: 3px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 26px;
+      @include phone {
+        font-size: 20px;
+      }
+      cursor: pointer;
+      &:hover {
+        background: white;
+        color: $dark;
+      }
+    }
+  }
+}

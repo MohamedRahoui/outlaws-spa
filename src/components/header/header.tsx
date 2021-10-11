@@ -7,7 +7,7 @@ import { useSnapshot } from 'valtio';
 import { store } from '../../store';
 import ST from './header.module.scss';
 import classNames from 'classnames/bind';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const Header = () => {
   const history = useHistory();
   const isLoginPage = useRouteMatch({
@@ -43,36 +43,52 @@ const Header = () => {
     },
   ];
   return (
-    <div className={ST.header}>
-      <img
-        className={ST.logo}
-        src={Outlaws}
-        alt='Moroccan Outlaws'
-        onClick={() => history.push('/')}
-      />
-      <div className={ST.menu}>
-        {menuItems.map((item, i) => (
-          <div
-            className={cx('menuItem', {
-              active: useRouteMatch({
-                path: item.path,
-              })?.isExact,
-            })}
-            key={i}
-            onClick={() => history.push(item.path)}
-          >
-            {item.text}
-          </div>
-        ))}
-      </div>
-      {!snap.user && !isLoginPage && (
-        <div className={ST.auth}>
-          <Button variant='contained' onClick={() => history.push('/login')}>
-            Connexion
-          </Button>
+    <div className={ST.headerWrapper}>
+      <div className={ST.header}>
+        <img
+          className={ST.logo}
+          src={Outlaws}
+          alt='Moroccan Outlaws'
+          onClick={() => history.push('/')}
+        />
+        <div className={ST.menu}>
+          {menuItems.map((item, i) => (
+            <div
+              className={cx('menuItem', {
+                active: useRouteMatch({
+                  path: item.path,
+                })?.isExact,
+              })}
+              key={i}
+              onClick={() => history.push(item.path)}
+            >
+              {item.text}
+            </div>
+          ))}
         </div>
+        {!snap.user && !isLoginPage && (
+          <div className={ST.auth}>
+            <Button variant='contained' onClick={() => history.push('/login')}>
+              Connexion
+            </Button>
+          </div>
+        )}
+        {snap.user && !isLoginPage && <UserAvatar />}
+      </div>
+      {!useRouteMatch({
+        path: '/',
+      })?.isExact && (
+        <Button
+          startIcon={<ArrowBackIcon />}
+          color='secondary'
+          size='small'
+          variant='outlined'
+          onClick={() => history.push('/')}
+          className={ST.backHome}
+        >
+          Retourner vers l'accueil
+        </Button>
       )}
-      {snap.user && !isLoginPage && <UserAvatar />}
     </div>
   );
 };

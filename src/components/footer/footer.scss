@@ -5,6 +5,11 @@
   height: 150px;
   margin-top: $desktop-spacing;
   font-size: $text-small;
+  @include text-light;
+  @include phone {
+    font-size: $text-small * 0.8;
+    font-weight: 100;
+  }
   flex: none;
   .divider {
     height: 1px;
@@ -15,9 +20,15 @@
     display: flex;
     justify-content: space-between;
     height: calc(100% - 1px);
+    @include phone {
+      height: auto;
+    }
     .madeBy {
       display: flex;
       align-items: flex-start;
+      @include phone {
+        display: none;
+      }
       .heartIcon {
         margin: -5px 5px 0 5px;
       }
@@ -31,6 +42,17 @@
         margin-top: $desktop-spacing;
         display: flex;
         justify-content: space-between;
+        @include phone {
+          justify-content: unset;
+          gap: 20px;
+          margin-top: $mobile-spacing + 5px;
+        }
+        img {
+          height: 25px;
+          @include phone {
+            height: 15px;
+          }
+        }
       }
     }
     .stop490 {
@@ -41,6 +63,21 @@
         margin-top: -7px;
         margin-right: 5px;
       }
+    }
+  }
+  .madeByMobile {
+    display: none;
+    align-items: center;
+    margin-top: 20px;
+    @include phone {
+      display: flex;
+    }
+    .heartIcon {
+      margin: -5px 5px 0 5px;
+    }
+    .rhaszare {
+      text-decoration: underline;
+      margin-left: 5px;
     }
   }
 }

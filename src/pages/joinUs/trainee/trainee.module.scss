@@ -1,0 +1,17 @@
+@import '../../../theme/vars.scss';
+.container {
+  @include base-container;
+  max-width: 100%;
+  width: 800px;
+  margin: auto;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .form {
+    @include spacing(margin-top);
+    .submit {
+      @include spacing(margin-top);
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { proxy } from 'valtio';
 import { getUser, logout, login } from '../helpers/user';
-import { IPetitonStore, IStore } from '../models/store';
+import { IPetitonStore, IStore, IVolunteerStore } from '../models/store';
 
 const store = proxy<IStore>({
   mobileNavOpen: false,
@@ -26,4 +26,14 @@ const petitionsStore = proxy<IPetitonStore>({
     petitionsStore.petitions = petitions || [];
   },
 });
-export { store, petitionsStore };
+
+const volunteersStore = proxy<IVolunteerStore>({
+  volunteers: [],
+  fetched: false,
+  setVolunteers: (volunteers) => {
+    volunteersStore.fetched = true;
+    volunteersStore.volunteers = volunteers || [];
+  },
+});
+
+export { store, petitionsStore, volunteersStore };

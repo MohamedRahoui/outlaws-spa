@@ -6,9 +6,11 @@ $desktop-spacing: 30px;
 $mobile-spacing: 10px;
 $font-family: 'Roboto', sans-serif;
 $text-heading: 34px;
+$text-heading-mobile: 25px;
 $text-regular: 18px;
 $text-small: 16px;
 $logo-size: 90px;
+$logo-mobile-size: 60px;
 $border-radius: 10px;
 $text-light-color: #747474;
 
@@ -45,6 +47,7 @@ $text-light-color: #747474;
   text-transform: uppercase;
   margin-bottom: $desktop-spacing;
   @include phone {
+    font-size: $text-heading-mobile;
     margin-bottom: $mobile-spacing;
   }
 }
