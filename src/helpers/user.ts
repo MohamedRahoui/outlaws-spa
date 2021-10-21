@@ -1,5 +1,7 @@
+import { toast } from 'react-toastify';
 import ILoginData from '../models/login';
 import IUser from '../models/user';
+import history from './history';
 
 const getRefreshToken = () => {
   const outlawsData = localStorage.getItem('outlawsData') || '';
@@ -39,8 +41,28 @@ const login = (data: ILoginData) => {
   localStorage.setItem('user', JSON.stringify(data.user));
   localStorage.setItem('outlaws', data.outlaws);
   localStorage.setItem('outlawsData', data.outlawsData);
+  localStorage.setItem(
+    'loggedIn',
+    (new Date().getTime() + 24 * 60 * 60000).toString()
+  );
 };
 
+const checkLogin = async (snap: any) => {
+  if (getToken()) {
+    try {
+      if (parseInt(localStorage.getItem('loggedIn') || '')) {
+        const loggedIn = new Date(
+          parseInt(localStorage.getItem('loggedIn') || '')
+        );
+        if (loggedIn <= new Date()) {
+          snap.logout();
+          history.push('/login');
+          toast.info('Votre session a expiré, veuillez vous reconnecter');
+        }
+      }
+    } catch (_) {}
+  }
+};
 const userName = (user: IUser | null) => {
   if (!user) return '';
   return user.firstName || user.lastName || user.email || '';
@@ -62,4 +84,5 @@ export {
   getToken,
   setToken,
   getRefreshToken,
+  checkLogin,
 };

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import { store } from '../store';
 import { getRefreshToken, getToken, setToken } from './user';
 import { toast } from 'react-toastify';

@@ -9,7 +9,8 @@ import {
 } from '@mui/material';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
-// import ST from './drawer.module.scss';
+import WorkIcon from '@mui/icons-material/Work';
+import MessageIcon from '@mui/icons-material/Message';
 import { useSnapshot } from 'valtio';
 import { store } from '../../../store';
 import { useHistory, useRouteMatch } from 'react-router-dom';
@@ -47,6 +48,16 @@ const DrawerContent = () => {
       path: '/staff/volunteers',
       label: 'Bénévoles',
       Icon: <VolunteerActivismIcon />,
+    },
+    {
+      path: '/staff/trainees',
+      label: 'Stagiaires',
+      Icon: <WorkIcon />,
+    },
+    {
+      path: '/staff/messages',
+      label: 'Messages',
+      Icon: <MessageIcon />,
     },
   ];
   return (

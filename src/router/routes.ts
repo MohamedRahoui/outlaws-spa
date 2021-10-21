@@ -7,7 +7,11 @@ import Petitions from '../pages/staff/petitions/petitions';
 import Volunteer from '../pages/joinUs/volunteer/volunteer';
 import Volunteers from '../pages/staff/volunteers/volunteers';
 import Trainee from '../pages/joinUs/trainee/trainee';
+import Trainees from '../pages/staff/trainees/trainees';
 import JoinUs from '../pages/joinUs/joinUs';
+import ContactUs from '../pages/contact-us/contactUs';
+import Messages from '../pages/staff/messages/messages';
+import AboutUs from '../pages/aboutUs/aboutUs';
 
 export default [
   {
@@ -33,12 +37,20 @@ export default [
     component: JoinUs,
   },
   {
+    path: '/about-us',
+    component: AboutUs,
+  },
+  {
     path: '/join-us/volunteer',
     component: Volunteer,
   },
   {
     path: '/join-us/trainee',
     component: Trainee,
+  },
+  {
+    path: '/contact-us',
+    component: ContactUs,
   },
   {
     path: '/staff',
@@ -53,6 +65,16 @@ export default [
   {
     path: '/staff/volunteers',
     component: Volunteers,
+    staff: true,
+  },
+  {
+    path: '/staff/trainees',
+    component: Trainees,
+    staff: true,
+  },
+  {
+    path: '/staff/messages',
+    component: Messages,
     staff: true,
   },
 ];

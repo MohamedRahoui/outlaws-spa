@@ -5,4 +5,11 @@ const CopyTextToClipboard = async (text: string) => {
     return document.execCommand('copy', true, text);
   }
 };
-export default CopyTextToClipboard;
+const scrollTop = () => {
+  try {
+    window?.scrollTo(0, 0);
+    document?.querySelector('.globalWrap')?.scrollTo(0, 0);
+    document?.querySelector('body')?.scrollTo(0, 0);
+  } catch (_) {}
+};
+export { CopyTextToClipboard, scrollTop };

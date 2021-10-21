@@ -41,6 +41,10 @@ const Header = () => {
       text: 'Vote4Love',
       path: '/vote4Love',
     },
+    {
+      text: 'Nous contacter',
+      path: '/contact-us',
+    },
   ];
   return (
     <div className={ST.headerWrapper}>

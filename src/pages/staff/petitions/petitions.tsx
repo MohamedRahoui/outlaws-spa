@@ -162,7 +162,7 @@ const Petitions = () => {
         loading={loading}
         autoPageSize
       />
-      <Suspense fallback={<div>Loading... </div>}>
+      <Suspense fallback={<div></div>}>
         <FilesDialog
           open={openFileDialog}
           handleClose={handleFilesDialogClose}

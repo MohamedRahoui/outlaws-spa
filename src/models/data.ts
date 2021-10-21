@@ -105,3 +105,37 @@ export type IVote = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+/**
+ * Model Reward
+ */
+
+export type IReward = {
+  id: number;
+  code: string;
+  price: number;
+  archived: boolean;
+};
+
+export type IPoints = {
+  validatedPetitions: number;
+  petitionsInProgress: number;
+  currentPoints: number;
+};
+
+export type ITrainee = {
+  id: string
+  name: string
+  email: string
+  phone: string
+  birth: string
+  address: string
+  degree: string
+  speciality: string
+  availability: string
+  letter: string
+  social: string | null
+  userId: string | null
+  createdAt: Date
+  updatedAt: Date
+}

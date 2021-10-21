@@ -24,6 +24,7 @@
       height: auto;
     }
     .madeBy {
+      cursor: pointer;
       display: flex;
       align-items: flex-start;
       @include phone {
@@ -48,6 +49,7 @@
           margin-top: $mobile-spacing + 5px;
         }
         img {
+          cursor: pointer;
           height: 25px;
           @include phone {
             height: 15px;
@@ -69,6 +71,7 @@
     display: none;
     align-items: center;
     margin-top: 20px;
+    cursor: pointer;
     @include phone {
       display: flex;
     }

@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import Axios from '../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
+import { scrollTop } from '../../helpers/tools';
 
 const Petition = () => {
   const { userId } = useParams<{ userId?: string }>();
@@ -138,7 +139,8 @@ const Petition = () => {
           })
             .then(() => {
               resetForm();
-              window.scrollTo(0, 0);
+              signCanvas.clear();
+              scrollTop();
               toast.success('Félicitation vous venez de signez la pétition');
               setSubmitting(false);
             })

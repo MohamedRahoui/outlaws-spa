@@ -1,0 +1,44 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  max-width: 100%;
+  margin: auto;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .tabs {
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+  }
+  .tabsContent {
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+    @include spacing(margin-top);
+  }
+  p {
+    margin-bottom: 12px;
+    font-size: $text-small;
+    line-height: $text-small + 8;
+    text-align: justify;
+  }
+  .teamMember {
+    border-bottom: 1px solid white;
+    @include spacing(margin-bottom);
+    .name {
+      float: left;
+      img {
+        width: 150px;
+        border-radius: $border-radius;
+      }
+      .label {
+        color: $primary-color;
+        text-align: center;
+      }
+      @include spacing(margin-right);
+    //   @include spacing(margin-bottom);
+    }
+  }
+}

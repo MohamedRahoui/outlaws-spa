@@ -16,10 +16,12 @@ const MobileActions = ({ ST }: { ST: CSSModuleClasses }) => {
     {
       src: Vote4Love,
       label: 'Vote4Love.',
+      link: '/vote4love',
     },
     {
       src: Logo,
       label: 'A propos de nous.',
+      link: '/about-us',
     },
     {
       src: JoinUs,
@@ -29,10 +31,12 @@ const MobileActions = ({ ST }: { ST: CSSModuleClasses }) => {
     {
       src: Testimony,
       label: 'Témoignages.',
+      link: '/testimonies',
     },
     {
       src: Contact,
       label: 'Nous contacter.',
+      link: '/contact-us',
     },
   ];
   return (

@@ -4,12 +4,13 @@ import Header from './components/header/header';
 import RouterComponent from './router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, useLocation } from 'react-router-dom';
 import { store } from './store';
 import { useSnapshot } from 'valtio';
-import { hasStaff } from './helpers/user';
+import { checkLogin, hasStaff } from './helpers/user';
 import StaffHeader from './components/staff/header/header';
 import StaffDrawer from './components/staff/drawer/drawer';
+import { useEffect } from 'react';
 
 let theme = createTheme({
   palette: {
@@ -41,17 +42,20 @@ let staffTheme = createTheme({
   },
 });
 function App() {
+  const location = useLocation();
   const staffPage = useRouteMatch({
     path: '/staff',
   });
   const snap = useSnapshot(store);
-
+  useEffect(() => {
+    checkLogin(snap);
+  }, [location]);
   if (hasStaff(snap.user) && staffPage)
     return (
       <ThemeProvider theme={staffTheme}>
         <Box sx={{ display: 'flex' }}>
           <StaffHeader />
-          <StaffDrawer/>
+          <StaffDrawer />
           <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <RouterComponent />

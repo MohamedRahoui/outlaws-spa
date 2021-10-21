@@ -4,14 +4,28 @@ import { store } from '../../store';
 import { useSnapshot } from 'valtio';
 import { getFullNameEmail } from '../../helpers/user';
 import { Alert, Avatar, Button } from '@mui/material';
-import { useState } from 'react';
-import CopyTextToClipboard from '../../helpers/tools';
+import { useEffect, useState } from 'react';
+import { CopyTextToClipboard } from '../../helpers/tools';
 import { Check } from '@mui/icons-material';
-
+import Axios from '../../helpers/axios';
+import badgesImages from '../../helpers/badgesImages';
+import { rewardsLabels } from '../../helpers/labels';
 const Profile = () => {
   const history = useHistory();
   const snap = useSnapshot(store);
   const [copied, setCopied] = useState(false);
+  useEffect(() => {
+    if (!snap.rewardsFetched) {
+      Axios.get('data/rewards').then((res) => {
+        store.setRewards(res.data || []);
+      });
+    }
+    if (!snap.pointsFetched) {
+      Axios.get('data/points').then((res) => {
+        store.setPoints(res.data);
+      });
+    }
+  }, []);
   const copy = () => {
     CopyTextToClipboard(
       `${import.meta.env.VITE_BASE_URL}/petition/${snap.user?.id}`
@@ -48,9 +62,48 @@ const Profile = () => {
         </div>
         <div className={ST.divider}></div>
         <div className={ST.scores}>
-          <div className={ST.score}>Points disponibles : 5</div>
-          <div className={ST.score}>Signatures validées : 30</div>
-          <div className={ST.score}>Signatures en cours : 9</div>
+          <div className={ST.score}>
+            Points disponibles : {snap.points.currentPoints}
+          </div>
+          <div className={ST.score}>
+            Signatures validées : {snap.points.validatedPetitions}
+          </div>
+          <div className={ST.score}>
+            Signatures en cours : {snap.points.petitionsInProgress}
+          </div>
+        </div>
+              
+        <div className={ST.rewards}>
+          {snap.rewards?.length &&
+            snap.rewards.map((reward) => (
+              <div className={ST.rewardWrapper}>
+                <div className={ST.reward}>
+                  <img
+                    className={ST.badge}
+                    src={
+                      snap.points.currentPoints < reward.price
+                        ? badgesImages[reward.code]
+                        : badgesImages[`${reward.code}_ACTIVE`]
+                    }
+                    alt={rewardsLabels[reward.code]}
+                  />
+                  <div className={ST.scoreBadge}>
+                    {snap.points.currentPoints} /{reward.price}
+                  </div>
+                </div>
+                <div className={ST.rewardLabel}>
+                  {rewardsLabels[reward.code]}
+                </div>
+                <Button
+                  variant='contained'
+                  size='small'
+                  className={ST.rewardOrder}
+                  disabled={snap.points.currentPoints < reward.price}
+                >
+                  Commander
+                </Button>
+              </div>
+            ))}
         </div>
         <div className={ST.ShareText}>
           Partagez ce lien avec vos amis et gagnez des points pour chaque
@@ -71,7 +124,7 @@ const Profile = () => {
             {copied ? 'Copié' : 'Copier'}
           </Button>
         </div>
-        <Button variant='contained' onClick={() => logout()}>
+        <Button variant='contained' onClick={() => logout()} className={ST.logout}>
           Déconnexion
         </Button>
       </div>
