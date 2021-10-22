@@ -14,6 +14,8 @@ import Messages from '../pages/staff/messages/messages';
 import AboutUs from '../pages/aboutUs/aboutUs';
 import Testimonies from '../pages/testimonies/testimonies';
 import TestimoniesStaff from '../pages/staff/testimonies/testimonies';
+import Vote4Love from '../pages/vote4love/vote4love';
+import Votes from '../pages/staff/votes/votes';
 
 export default [
   {
@@ -33,6 +35,10 @@ export default [
   {
     path: '/petition/:userId?',
     component: Petition,
+  },
+  {
+    path: '/vote4love',
+    component: Vote4Love,
   },
   {
     path: '/join-us',
@@ -66,6 +72,11 @@ export default [
   {
     path: '/staff/petitions',
     component: Petitions,
+    staff: true,
+  },
+  {
+    path: '/staff/votes',
+    component: Votes,
     staff: true,
   },
   {

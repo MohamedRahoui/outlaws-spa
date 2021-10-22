@@ -12,6 +12,7 @@ import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import WorkIcon from '@mui/icons-material/Work';
 import MessageIcon from '@mui/icons-material/Message';
 import ShareIcon from '@mui/icons-material/Share';
+import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { useSnapshot } from 'valtio';
 import { store } from '../../../store';
 import { useHistory, useRouteMatch } from 'react-router-dom';
@@ -44,6 +45,11 @@ const DrawerContent = () => {
       path: '/staff/petitions',
       label: 'Pétitions',
       Icon: <ListAltIcon />,
+    },
+    {
+      path: '/staff/votes',
+      label: 'Vote4Love',
+      Icon: <HowToVoteIcon />,
     },
     {
       path: '/staff/testimonies',

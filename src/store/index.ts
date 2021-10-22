@@ -7,6 +7,7 @@ import {
   ITestimonyStore,
   ITraineeStore,
   IVolunteerStore,
+  IVoteStore,
 } from '../models/store';
 
 const store = proxy<IStore>({
@@ -59,6 +60,15 @@ const volunteersStore = proxy<IVolunteerStore>({
   },
 });
 
+const votesStore = proxy<IVoteStore>({
+  votes: [],
+  fetched: false,
+  setVotes: (votes) => {
+    votesStore.fetched = true;
+    votesStore.votes = votes || [];
+  },
+});
+
 const traineesStore = proxy<ITraineeStore>({
   trainees: [],
   fetched: false,
@@ -101,5 +111,6 @@ export {
   traineesStore,
   messagesStore,
   testimoniesStore,
-  testimoniesStaffStore
+  testimoniesStaffStore,
+  votesStore,
 };

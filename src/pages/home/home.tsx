@@ -28,7 +28,9 @@ const Home = () => {
             <Button onClick={() => history.push('/petition')}>
               Signer la pétition
             </Button>
-            <Button>Vote4Love</Button>
+            <Button onClick={() => history.push('/vote4love')}>
+              Vote4Love
+            </Button>
           </ButtonGroup>
         </div>
 

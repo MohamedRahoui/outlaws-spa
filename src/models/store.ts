@@ -6,6 +6,7 @@ import {
   ITestimony,
   ITrainee,
   IVolunteer,
+  IVote,
 } from './data';
 import ILoginData from './login';
 import IUser from './user';
@@ -34,6 +35,12 @@ export interface IVolunteerStore {
   volunteers: IVolunteer[];
   fetched: boolean;
   setVolunteers: (volunteers: IVolunteer[]) => void;
+}
+
+export interface IVoteStore {
+  votes: IVote[];
+  fetched: boolean;
+  setVotes: (votes: IVote[]) => void;
 }
 
 export interface ITraineeStore {

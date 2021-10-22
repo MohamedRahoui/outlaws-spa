@@ -1,0 +1,28 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  max-width: 100%;
+  width: 800px;
+  margin: auto;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .subHeading {
+    @include spacing(margin-top);
+    @include spacing(margin-bottom);
+    text-align: center;
+    color: #cfcfcf;
+    font-size: $text-small;
+    @include text-light;
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+  }
+  .form {
+    @include spacing(margin-top);
+    .submit {
+      @include spacing(margin-top);
+    }
+  }
+}
