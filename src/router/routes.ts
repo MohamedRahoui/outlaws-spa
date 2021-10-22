@@ -12,6 +12,8 @@ import JoinUs from '../pages/joinUs/joinUs';
 import ContactUs from '../pages/contact-us/contactUs';
 import Messages from '../pages/staff/messages/messages';
 import AboutUs from '../pages/aboutUs/aboutUs';
+import Testimonies from '../pages/testimonies/testimonies';
+import TestimoniesStaff from '../pages/staff/testimonies/testimonies';
 
 export default [
   {
@@ -39,6 +41,10 @@ export default [
   {
     path: '/about-us',
     component: AboutUs,
+  },
+  {
+    path: '/testimonies',
+    component: Testimonies,
   },
   {
     path: '/join-us/volunteer',
@@ -75,6 +81,11 @@ export default [
   {
     path: '/staff/messages',
     component: Messages,
+    staff: true,
+  },
+  {
+    path: '/staff/testimonies',
+    component: TestimoniesStaff,
     staff: true,
   },
 ];

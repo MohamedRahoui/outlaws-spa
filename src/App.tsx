@@ -30,6 +30,9 @@ let theme = createTheme({
       contrastText: '#FFFFFF',
     },
   },
+  typography: {
+    fontFamily: 'Lato, sans-serif',
+  },
 });
 let staffTheme = createTheme({
   palette: {
@@ -39,6 +42,9 @@ let staffTheme = createTheme({
     success: {
       main: '#5cb85c',
     },
+  },
+  typography: {
+    fontFamily: 'Lato, sans-serif',
   },
 });
 function App() {
@@ -60,7 +66,7 @@ function App() {
             <Toolbar />
             <RouterComponent />
           </Box>
-          <ToastContainer />
+          <ToastContainer style={{ fontFamily: 'Lato, sans-serif' }} />
         </Box>
       </ThemeProvider>
     );
@@ -70,7 +76,7 @@ function App() {
         <Header />
         <RouterComponent />
         <Footer />
-        <ToastContainer />
+        <ToastContainer style={{ fontFamily: 'Lato, sans-serif' }} />
       </div>
     </ThemeProvider>
   );

@@ -1,7 +1,7 @@
-import { Avatar, Badge } from '@mui/material';
+import { Avatar, Badge, Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { useSnapshot } from 'valtio';
-import { userName } from '../../helpers/user';
+import { hasStaff, userName } from '../../helpers/user';
 import { store } from '../../store';
 import ST from './userAvatar.module.scss';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -31,6 +31,15 @@ const UserAvatar = () => {
             onClick={() => history.push('/profile')}
           />
         </Badge>
+      )}
+      {snap.user?.role === 'STAFF' && (
+        <Button
+          onClick={() => {
+            history.push('/staff');
+          }}
+        >
+          Staff
+        </Button>
       )}
     </div>
   );

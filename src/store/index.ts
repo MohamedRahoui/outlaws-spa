@@ -4,6 +4,7 @@ import {
   IMessageStore,
   IPetitonStore,
   IStore,
+  ITestimonyStore,
   ITraineeStore,
   IVolunteerStore,
 } from '../models/store';
@@ -76,4 +77,29 @@ const messagesStore = proxy<IMessageStore>({
   },
 });
 
-export { store, petitionsStore, volunteersStore, traineesStore, messagesStore };
+const testimoniesStore = proxy<ITestimonyStore>({
+  testimonies: [],
+  fetched: false,
+  setTestimonies: (testimonies) => {
+    testimoniesStore.fetched = true;
+    testimoniesStore.testimonies = testimonies || [];
+  },
+});
+const testimoniesStaffStore = proxy<ITestimonyStore>({
+  testimonies: [],
+  fetched: false,
+  setTestimonies: (testimonies) => {
+    testimoniesStaffStore.fetched = true;
+    testimoniesStaffStore.testimonies = testimonies || [];
+  },
+});
+
+export {
+  store,
+  petitionsStore,
+  volunteersStore,
+  traineesStore,
+  messagesStore,
+  testimoniesStore,
+  testimoniesStaffStore
+};

@@ -45,9 +45,10 @@ const Volunteer = () => {
       .max(500, 'Votre réponse ne peut pas dépasser 500 caractères')
       .min(5, 'Votre réponse doit contenir au moins 5 caractères')
       .required('Votre réponse est requise'),
-    social: Yup.string()
-      .max(40, 'Votre Compte ne peut pas dépasser 40 caractères')
-      .min(3, 'Votre Compte doit contenir au moins 3 caractères'),
+    social: Yup.string().max(
+      40,
+      'Votre Compte ne peut pas dépasser 40 caractères'
+    ),
   });
   return (
     <div className={ST.container}>

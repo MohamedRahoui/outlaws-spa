@@ -1,4 +1,12 @@
-import { IMessage, IPetition, IPoints, IReward, ITrainee, IVolunteer } from './data';
+import {
+  IMessage,
+  IPetition,
+  IPoints,
+  IReward,
+  ITestimony,
+  ITrainee,
+  IVolunteer,
+} from './data';
 import ILoginData from './login';
 import IUser from './user';
 
@@ -38,4 +46,10 @@ export interface IMessageStore {
   messages: IMessage[];
   fetched: boolean;
   setMessages: (messages: IMessage[]) => void;
+}
+
+export interface ITestimonyStore {
+  testimonies: ITestimony[];
+  fetched: boolean;
+  setTestimonies: (testimonies: ITestimony[]) => void;
 }

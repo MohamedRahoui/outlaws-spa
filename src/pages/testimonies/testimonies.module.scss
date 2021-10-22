@@ -1,0 +1,82 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  max-width: 100%;
+  margin: auto;
+  position: relative;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .subHeading {
+    @include spacing(margin-top);
+    @include spacing(margin-bottom);
+    text-align: center;
+    color: #cfcfcf;
+    font-size: $text-small;
+    @include text-light;
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+  }
+  .testimonyAction {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .modal {
+    background-color: white;
+    color: $dark;
+    display: none;
+  }
+  .blocksGridColumn {
+    padding-left: 15px; /* gutter size */
+    background-clip: padding-box;
+  }
+  .blocks {
+    @include spacing(margin-top);
+    display: flex;
+    margin-left: -15px; /* gutter size offset */
+    width: auto;
+    padding-bottom: 50px;
+    .block {
+      background: #ffffff;
+      border-radius: $border-radius;
+      @include spacing(padding);
+      margin-bottom: 15px;
+      .text {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+        p:first-of-type,
+        p:last-of-type {
+          display: inline;
+        }
+        span {
+          white-space: pre-wrap;
+        }
+      }
+      .info {
+        @include spacing(margin-top);
+        font-style: italic;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        -webkit-text-decoration-line: underline;
+        text-decoration-line: underline;
+        color: #898989;
+      }
+    }
+  }
+}
+
+.primaryText {
+  color: $primary-color;
+}
+.submit {
+  display: block !important;
+  margin: auto !important;
+  width: 80%;
+}
