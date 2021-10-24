@@ -9,9 +9,11 @@ import { IPetition } from '../../../models/data';
 import { petitionsStore } from '../../../store';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { toast } from 'react-toastify';
+import fileDownload from 'js-file-download';
 
 const Petitions = () => {
   const [loading, setLoading] = useState(false);
+  const [downloadLoading, setDownloadLoading] = useState(false);
   const [fileLoading, setFileLoading] = useState(false);
   const [openFileDialog, setOpenFileDialog] = useState(false);
   const [selectedPetiton, setSelectedPetiton] = useState<IPetition | null>(
@@ -132,7 +134,6 @@ const Petitions = () => {
       },
     },
   ];
-
   const fetchPetitons = async () => {
     if (!executeRecaptcha) return;
     if (!snap.fetched) {
@@ -151,6 +152,25 @@ const Petitions = () => {
     }
   };
 
+  const download = async () => {
+    if (!executeRecaptcha) return;
+    setDownloadLoading(true);
+    const recaptcha = await executeRecaptcha('downloadPetitions' as string);
+    Axios.get('petitions/download', {
+      headers: {
+        'X-RECAPTCHA': recaptcha,
+      },
+      responseType: 'arraybuffer',
+    })
+      .then((res) => {
+        const blob = new Blob([res.data], {
+          type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        });
+        fileDownload(blob, 'petitions.docx');
+        setDownloadLoading(false);
+      })
+      .catch(() => setDownloadLoading(false));
+  };
   return (
     <div style={{ width: '100%' }}>
       <DataGrid
@@ -162,6 +182,16 @@ const Petitions = () => {
         loading={loading}
         autoPageSize
       />
+
+      <LoadingButton
+        size='small'
+        variant='contained'
+        style={{ marginTop: 15 }}
+        loading={downloadLoading}
+        onClick={download}
+      >
+        Télécharger les signatures validées (docx)
+      </LoadingButton>
       <Suspense fallback={<div></div>}>
         <FilesDialog
           open={openFileDialog}

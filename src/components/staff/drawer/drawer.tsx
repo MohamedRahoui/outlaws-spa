@@ -43,7 +43,7 @@ const DrawerContent = () => {
   const items = [
     {
       path: '/staff/petitions',
-      label: 'Pétitions',
+      label: 'Signatures',
       Icon: <ListAltIcon />,
     },
     {

@@ -5,6 +5,7 @@ import {
   IPetitonStore,
   IStore,
   ITestimonyStore,
+  ITestimonyStorePublic,
   ITraineeStore,
   IVolunteerStore,
   IVoteStore,
@@ -87,12 +88,16 @@ const messagesStore = proxy<IMessageStore>({
   },
 });
 
-const testimoniesStore = proxy<ITestimonyStore>({
+const testimoniesStore = proxy<ITestimonyStorePublic>({
   testimonies: [],
   fetched: false,
   setTestimonies: (testimonies) => {
     testimoniesStore.fetched = true;
     testimoniesStore.testimonies = testimonies || [];
+  },
+  count: 0,
+  setCount: (count) => {
+    testimoniesStore.count = count || 0;
   },
 });
 const testimoniesStaffStore = proxy<ITestimonyStore>({

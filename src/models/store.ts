@@ -60,3 +60,8 @@ export interface ITestimonyStore {
   fetched: boolean;
   setTestimonies: (testimonies: ITestimony[]) => void;
 }
+
+export interface ITestimonyStorePublic extends ITestimonyStore {
+  count: number;
+  setCount: (count: number) => void;
+}

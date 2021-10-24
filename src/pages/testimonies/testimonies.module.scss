@@ -20,9 +20,13 @@
     margin: auto;
   }
   .testimonyAction {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    position: fixed;
+    bottom: $desktop-spacing + 73px;
+    right: $desktop-spacing;
+    @include phone {
+      bottom: $mobile-spacing + 73px;
+      right: $mobile-spacing;
+    }
   }
   .modal {
     background-color: white;
@@ -38,7 +42,6 @@
     display: flex;
     margin-left: -15px; /* gutter size offset */
     width: auto;
-    padding-bottom: 50px;
     .block {
       background: #ffffff;
       border-radius: $border-radius;
