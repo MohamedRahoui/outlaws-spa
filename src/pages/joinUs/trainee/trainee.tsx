@@ -13,6 +13,8 @@ import { useHistory } from 'react-router-dom';
 import Axios from '../../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../../helpers/tags';
 
 const Trainee = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -22,8 +24,10 @@ const Trainee = () => {
       .max(40, 'Votre Nom ne peut pas dépasser 40 caractères')
       .min(3, 'Votre Nom doit contenir au moins 3 caractères')
       .required('Votre Nom est requis'),
-    social: Yup.string()
-      .max(40, 'Votre Compter ne peut pas dépasser 40 caractères'),
+    social: Yup.string().max(
+      40,
+      'Votre Compter ne peut pas dépasser 40 caractères'
+    ),
     email: Yup.string()
       .email('Veuillez insérer un E-mail valide')
       .required('Votre E-mail est requis'),
@@ -69,6 +73,14 @@ const Trainee = () => {
   });
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Demande de stage - {appName}</title>
+        <meta name='keywords' content={'Demande de stage, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'Demande de stage , ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Effectuer un stage</div>
       <Formik
         validateOnChange={true}

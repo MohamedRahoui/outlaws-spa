@@ -3,12 +3,25 @@ import ST from './home.module.scss';
 import Fist from '../../../assets/img/fist.png';
 import { useHistory } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const MobileButtons = lazy(() => import('./mobileActions/mobileActions'));
 const Home = () => {
   const history = useHistory();
   return (
     <React.Fragment>
       <div className={ST.container}>
+        <Helmet>
+          <title>L'amour n'est pas un crime - {appName}</title>
+          <meta
+            name='keywords'
+            content={"L'amour n'est pas un crime, " + baseKeywords}
+          />
+          <meta
+            name='description'
+            content={"L'amour n'est pas un crime, " + baseDescription}
+          />
+        </Helmet>
         <div className={ST.mainText}>
           <h1>L'AMOUR N'EST PAS UN CRIME.</h1>
           <br />

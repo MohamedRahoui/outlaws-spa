@@ -75,8 +75,8 @@ const Profile = () => {
               
         <div className={ST.rewards}>
           {snap.rewards?.length &&
-            snap.rewards.map((reward) => (
-              <div className={ST.rewardWrapper}>
+            snap.rewards.map((reward, key) => (
+              <div className={ST.rewardWrapper} key={key}>
                 <div className={ST.reward}>
                   <img
                     className={ST.badge}

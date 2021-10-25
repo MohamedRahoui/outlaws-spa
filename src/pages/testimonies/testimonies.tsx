@@ -11,6 +11,8 @@ import QUOTATION_START from '../../../assets/img/quotation-start.svg';
 import QUOTATION_END from '../../../assets/img/quotation-end.svg';
 import LinearProgress from '@mui/material/LinearProgress';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const TestimonyModal = lazy(() => import('./testimonyModal/testimonyModal'));
 const Testimonies = () => {
   const snap = useSnapshot(testimoniesStore);
@@ -84,6 +86,17 @@ const Testimonies = () => {
   };
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Témoignages - {appName}</title>
+        <meta
+          name='keywords'
+          content={'Témoignages, Raconte ton histoire ' + baseKeywords}
+        />
+        <meta
+          name='description'
+          content={'Témoignages, Raconte ton histoire ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Témoignages</div>
       <div className={ST.subHeading}>
         <br />

@@ -1,6 +1,8 @@
+import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useSnapshot } from 'valtio';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 import { store } from '../../store';
 import ST from './joinUs.module.scss';
 
@@ -31,6 +33,14 @@ const JoinUs = () => {
   };
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Nous rejoindre - {appName}</title>
+        <meta name='keywords' content={'Nous rejoindre, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'Nous rejoindre, ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Nous rejoidnre</div>
       <div className={ST.subHeading}>
         Vous souhaitez rejoindre notre association en tant que :

@@ -17,7 +17,8 @@ import Axios from '../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
 import { scrollTop } from '../../helpers/tools';
-
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const Petition = () => {
   const { userId } = useParams<{ userId?: string }>();
   const [signCanvas, setSignCanvas] = useState<any>(null);
@@ -73,6 +74,14 @@ const Petition = () => {
   });
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Signer la pétition - {appName}</title>
+        <meta name='keywords' content={'Signer la pétition, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'Signer la pétition, ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Pétition </div>
       <div className={ST.petitionText}>
         <p>
@@ -153,7 +162,7 @@ const Petition = () => {
             });
         }}
       >
-        {({ isSubmitting, values, setFieldValue, errors }) => (
+        {({ isSubmitting, values, setFieldValue, errors, touched }) => (
           <Form className={ST.form}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
@@ -194,7 +203,7 @@ const Petition = () => {
               <Grid item xs={12} sm={6}>
                 <MyFieldLabel
                   label='Signature manuscrite'
-                  error={!!errors.signature}
+                  error={!!(errors.signature && touched.signature)}
                 />
                 <div className={ST.signWrapper}>
                   <SignatureCanvas
@@ -231,7 +240,9 @@ const Petition = () => {
                     <ReplayIcon />
                   </IconButton>
                 </div>
-                {errors.signature && <MyFieldError error={errors.signature} />}
+                {errors.signature && touched.signature && (
+                  <MyFieldError error={errors.signature} />
+                )}
               </Grid>
             </Grid>
             <LoadingButton

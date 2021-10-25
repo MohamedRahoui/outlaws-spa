@@ -15,6 +15,8 @@ import { useHistory } from 'react-router-dom';
 import Axios from '../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 
 const ContactUs = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -44,6 +46,14 @@ const ContactUs = () => {
   });
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Nous contacter - {appName}</title>
+        <meta name='keywords' content={'Nous contacter, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'Nous contacter , ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Nous contacter</div>
       <Formik
         validateOnChange={true}

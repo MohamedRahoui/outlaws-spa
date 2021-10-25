@@ -9,10 +9,20 @@ import AYA from '../../../assets/img/team/aya.png';
 import GHIZLANE from '../../../assets/img/team/ghizlane.png';
 import NARJIS from '../../../assets/img/team/narjis.jpeg';
 import OUTLAWS from '../../../assets/img/outlaw.png';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const AboutUs = () => {
   const [tab, setTab] = useState('outlaws');
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>À propos de nous - {appName}</title>
+        <meta name='keywords' content={'À propos de nous, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'À propos de nous , ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>à propos de nous</div>
       <Tabs
         value={tab}

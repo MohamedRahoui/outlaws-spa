@@ -9,6 +9,8 @@ import { useHistory } from 'react-router-dom';
 import Axios from '../../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../../helpers/tags';
 
 const Volunteer = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -52,6 +54,14 @@ const Volunteer = () => {
   });
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Devenir Bénévole - {appName}</title>
+        <meta name='keywords' content={'Devenir Bénévole, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'Devenir Bénévole , ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Demande de bénévolat</div>
       <Formik
         validateOnChange={true}

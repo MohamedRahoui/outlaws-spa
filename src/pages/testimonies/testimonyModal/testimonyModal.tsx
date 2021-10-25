@@ -106,7 +106,7 @@ const TestimonyModal = ({
                   setSubmitting(false);
                   setModal(false);
                   toast.success(
-                    'Merci d’avoir partagé ton témoignage ! Ta voix compte.'
+                    'Merci d’avoir partagé votre témoignage ! Votre voix compte.'
                   );
                 })
                 .catch((errors) => {
@@ -140,6 +140,12 @@ const TestimonyModal = ({
                   </Grid>
                 </Grid>
                 <br />
+                <DialogContentText>
+                  Une votre ton témoignage validé par notre équipe, vous pourrez
+                  le voir dans cette page et peut-être même sur nos réseaux
+                  sociaux.
+                </DialogContentText>
+                <br />
                 <LoadingButton
                   variant='contained'
                   type='submit'
@@ -151,11 +157,6 @@ const TestimonyModal = ({
               </Form>
             )}
           </Formik>
-          <DialogContentText>
-            <br />
-            Une fois ton témoignage validé par notre équipe, tu pourras le voir
-            dans cette page et peut-être même sur nos réseaux sociaux.
-          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setModal(false)} color='secondary'>

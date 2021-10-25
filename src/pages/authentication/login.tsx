@@ -10,6 +10,8 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useHistory } from 'react-router-dom';
 import Axios from '../../helpers/axios';
 import { toast } from 'react-toastify';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
+import { Helmet } from 'react-helmet';
 const Login = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const history = useHistory();
@@ -47,6 +49,14 @@ const Login = () => {
   };
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Se connecter - {appName}</title>
+        <meta name='keywords' content={'Se connecter, ' + baseKeywords} />
+        <meta
+          name='description'
+          content={'Se connecter , ' + baseDescription}
+        />
+      </Helmet>
       <div className={ST.leftSide}></div>
       <div className={ST.rigthSide}>
         <div className={ST.rightContent}>

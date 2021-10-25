@@ -9,6 +9,8 @@ import { useHistory } from 'react-router-dom';
 import Axios from '../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
+import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 
 const Vote4Love = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -40,6 +42,14 @@ const Vote4Love = () => {
   });
   return (
     <div className={ST.container}>
+      <Helmet>
+        <title>Vote4Love - {appName}</title>
+        <meta name='keywords' content={"Voter pour l'amour, " + baseKeywords} />
+        <meta
+          name='description'
+          content={"Voter pour l'amour, " + baseDescription}
+        />
+      </Helmet>
       <div className={ST.heading}>Vote 4 Love</div>
       <div className={ST.subHeading}>
         All languages are accepted <br /> <br />
