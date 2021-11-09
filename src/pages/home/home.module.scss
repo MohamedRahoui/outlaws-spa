@@ -57,6 +57,9 @@
       @include base-padding;
       padding-left: 30px !important;
       position: relative;
+      &.mobileActionShowOff {
+        background: $primary-color;
+      }
       img {
         height: 100%;
       }

@@ -11,7 +11,7 @@ import QUOTATION_START from '../../../assets/img/quotation-start.svg';
 import QUOTATION_END from '../../../assets/img/quotation-end.svg';
 import LinearProgress from '@mui/material/LinearProgress';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const TestimonyModal = lazy(() => import('./testimonyModal/testimonyModal'));
 const Testimonies = () => {

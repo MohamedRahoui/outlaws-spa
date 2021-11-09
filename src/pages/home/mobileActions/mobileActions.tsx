@@ -17,6 +17,7 @@ const MobileActions = ({ ST }: { ST: CSSModuleClasses }) => {
       src: Vote4Love,
       label: 'Vote4Love.',
       link: '/vote4love',
+      showOff: true,
     },
     {
       src: Logo,
@@ -43,7 +44,11 @@ const MobileActions = ({ ST }: { ST: CSSModuleClasses }) => {
     <div className={ST.mobileActions}>
       {actions.map((action, key) => (
         <div
-          className={ST.mobileAction}
+          className={
+            action.showOff
+              ? `${ST.mobileAction} ${ST.mobileActionShowOff}`
+              : ST.mobileAction
+          }
           key={key}
           onClick={() => (action.link ? history.push(action.link) : null)}
         >

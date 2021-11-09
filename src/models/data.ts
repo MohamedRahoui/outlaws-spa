@@ -74,17 +74,18 @@ export type IVolunteer = {
  */
 
 export type IMember = {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  birth: string;
-  address: string;
-  social: string | null;
-  files: string;
-  userId: string;
-  createdAt: Date;
-  updatedAt: Date;
+  id: string
+  name: string
+  email: string
+  phone: string
+  birth: string
+  address: string
+  social: string | null
+  subscription: Date | null
+  valid: boolean
+  userId: string
+  createdAt: Date
+  updatedAt: Date
 };
 
 /**

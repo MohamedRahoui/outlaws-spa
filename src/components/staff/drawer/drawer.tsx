@@ -16,7 +16,7 @@ import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import { useSnapshot } from 'valtio';
 import { store } from '../../../store';
 import { useHistory, useRouteMatch } from 'react-router-dom';
-
+import GroupIcon from '@mui/icons-material/Group';
 const Item = ({ path, label, Icon }: any) => {
   const history = useHistory();
   const linkClick = () => {
@@ -50,6 +50,11 @@ const DrawerContent = () => {
       path: '/staff/votes',
       label: 'Vote4Love',
       Icon: <HowToVoteIcon />,
+    },
+    {
+      path: '/staff/members',
+      label: 'Adhérants',
+      Icon: <GroupIcon />,
     },
     {
       path: '/staff/testimonies',

@@ -43,6 +43,7 @@ const FileUpload = ({
     <div>
       <MyFieldLabel label={label} error={!!errorText} />
       <FilePond
+        key={fieldName}
         files={values[fieldName]}
         onupdatefiles={(files) => {
           const filesList = files.map((fileItem) => fileItem.file);

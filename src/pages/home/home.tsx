@@ -3,7 +3,7 @@ import ST from './home.module.scss';
 import Fist from '../../../assets/img/fist.png';
 import { useHistory } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const MobileButtons = lazy(() => import('./mobileActions/mobileActions'));
 const Home = () => {

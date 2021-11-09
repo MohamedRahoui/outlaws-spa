@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Formik, Form } from 'formik';
-import ST from './trainee.module.scss';
+import ST from './member.module.scss';
 import * as Yup from 'yup';
 import { MyTextField } from '../../../helpers/form';
 import {
@@ -15,19 +15,14 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../../helpers/tags';
-
-const Trainee = () => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
+const Member = () => {
   const history = useHistory();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const formValidation = Yup.object({
     name: Yup.string()
       .max(40, 'Votre Nom ne peut pas dépasser 40 caractères')
       .min(3, 'Votre Nom doit contenir au moins 3 caractères')
       .required('Votre Nom est requis'),
-    social: Yup.string().max(
-      40,
-      'Votre Compter ne peut pas dépasser 40 caractères'
-    ),
     email: Yup.string()
       .email('Veuillez insérer un E-mail valide')
       .required('Votre E-mail est requis'),
@@ -43,45 +38,51 @@ const Trainee = () => {
       .max(150, 'Votre Adresse ne peut pas dépasser 150 caractères')
       .min(5, 'Votre Adresse doit contenir au moins 5 caractères')
       .required('Votre Adresse est requise'),
-    degree: Yup.string()
-      .max(150, 'Votre réponse ne peut pas dépasser 150 caractères')
-      .min(5, 'Votre réponse doit contenir au moins 5 caractères')
-      .required('Votre réponse est requise'),
-    speciality: Yup.string()
-      .max(300, 'Votre réponse ne peut pas dépasser 300 caractères')
-      .min(5, 'Votre réponse doit contenir au moins 5 caractères')
-      .required('Votre réponse est requise'),
-    availability: Yup.string()
-      .max(100, 'Votre réponse ne peut pas dépasser 100 caractères')
-      .min(5, 'Votre réponse doit contenir au moins 5 caractères')
-      .required('Votre réponse est requise'),
-    letter: Yup.string()
-      .max(3000, 'Votre réponse ne peut pas dépasser 3000 caractères')
-      .min(5, 'Votre réponse doit contenir au moins 5 caractères')
-      .required('Votre réponse est requise'),
-    cv: Yup.array()
-      .min(1, 'Votre CV est requis')
-      .required('Votre CV est requis')
+    identity_card: Yup.array()
+      .min(2, 'Votre carte didentité est requise (Recto et Verso)')
+      .required('Votre carte didentité est requise (Recto et Verso)')
       .test(
         'file-size',
-        'La taille du fichier ne doit pas depasser 5MB',
-        (value: any) => filesSizeCheck(value, 5)
+        'La taille des images ne doit pas depasser 20MB',
+        (value: any) => filesSizeCheck(value, 20)
       )
-      .test('file-type', 'Le fichier doit être de type PDF', (value: any) =>
-        filesTypeCheck(value, ['application/pdf'])
+      .test(
+        'file-type',
+        'Les images doivent être de type PNG ou JPG',
+        (value: any) => filesTypeCheck(value, ['image/png', 'image/jpeg'])
       ),
+    picture: Yup.array()
+      .length(1, 'Votre photo est requise')
+      .required('Votre photo est requise')
+      .test(
+        'file-size',
+        'La taille des images ne doit pas depasser 20MB',
+        (value: any) => filesSizeCheck(value, 20)
+      )
+      .test(
+        'file-type',
+        'Les images doivent être de type PNG ou JPG',
+        (value: any) => filesTypeCheck(value, ['image/png', 'image/jpeg'])
+      ),
+    social: Yup.string().max(
+      40,
+      'Votre Compte ne peut pas dépasser 40 caractères'
+    ),
   });
   return (
     <div className={ST.container}>
       <Helmet>
-        <title>Demande de stage - {appName}</title>
-        <meta name='keywords' content={'Demande de stage, ' + baseKeywords} />
+        <title>Devenir adhérent - {appName}</title>
+        <meta
+          name='keywords'
+          content={'Devenir adhérent, subscription, member ' + baseKeywords}
+        />
         <meta
           name='description'
-          content={'Demande de stage , ' + baseDescription}
+          content={'Devenir adhérent, ' + baseDescription}
         />
       </Helmet>
-      <div className={ST.heading}>Effectuer un stage</div>
+      <div className={ST.heading}>Devenir adhérant</div>
       <Formik
         validateOnChange={true}
         initialValues={{
@@ -90,44 +91,42 @@ const Trainee = () => {
           phone: '',
           birth: '',
           address: '',
-          degree: '',
-          speciality: '',
-          availability: '',
-          letter: '',
           social: '',
-          cv: [],
+          identity_card: [] as any,
+          picture: [] as any,
         }}
         validationSchema={formValidation}
         onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
-          console.log(values);
-
           setSubmitting(true);
           let recaptcha = '';
           if (executeRecaptcha) {
-            recaptcha = await executeRecaptcha('CreateTrainee');
+            recaptcha = await executeRecaptcha('BecomeMember' as string);
           }
           const formData = new FormData();
           for (const [key, value] of Object.entries(values)) {
-            if (key === 'cv' && value) {
+            if (key === 'identity_card') {
               const files = value as any[];
-              files.forEach((file) => {
-                formData.append(key, file);
+              files.forEach((file, i) => {
+                formData.append(`${key}_${i + 1}`, file);
               });
-            } else if (key && value) {
-              formData.append(key, value as string);
+            } else if (key === 'picture') {
+              const files = value as any[];
+              if (files?.length !== 1) return;
+              formData.append('picture', files[0]);
+            } else {
+              formData.append(key, value);
             }
           }
-          Axios.post('/trainees', formData, {
+          Axios.post('/members', formData, {
             headers: {
               'X-RECAPTCHA': recaptcha,
             },
           })
             .then(() => {
               resetForm();
-              window.scrollTo(0, 0);
+              history.push('/profile');
+              toast.success('Votre demande est envoyé');
               setSubmitting(false);
-              history.push('/');
-              toast.success('Merci! Votre demande est envoyé');
             })
             .catch((errors) => {
               const res = errors.response;
@@ -138,17 +137,17 @@ const Trainee = () => {
             });
         }}
       >
-        {({ isSubmitting, values, setFieldValue, errors }) => (
+        {({ isSubmitting, values, setFieldValue }) => (
           <Form className={ST.form}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <MyTextField name='name' label='Nom complet' />
+                <MyTextField name='name' label='Prénom' />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <MyTextField name='email' label='Email' />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <MyTextField name='phone' label='N° de téléphone' />
+                <MyTextField name='phone' label='Numéro de téléphone' />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <MyTextField name='birth' label='Date de naissance' />
@@ -157,26 +156,6 @@ const Trainee = () => {
                 <MyTextField
                   name='address'
                   label='Adresse'
-                  multiline
-                  rows={4}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <MyTextField name='degree' label="Niveau d'étude" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <MyTextField name='speciality' label='Spécialité' />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <MyTextField
-                  name='availability'
-                  label='Date de disponibilité'
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <MyTextField
-                  name='letter'
-                  label='Pourquoi souhaitez-vous rejoindre le Collectif 490 ?'
                   multiline
                   rows={4}
                 />
@@ -191,14 +170,20 @@ const Trainee = () => {
               <Grid item xs={12} sm={6}>
                 <FileUpload
                   values={values}
-                  fieldName='cv'
+                  fieldName='picture'
                   setFieldValue={setFieldValue}
-                  label='Curriculum Vitae (CV)'
-                  innerLabel='Cliquez ici pour Télecharger votre CV'
+                  label='Photo récente'
+                  innerLabel='Cliquez ici pour Télecharger votre photo'
                   maxFiles={1}
-                  typesMessage='PDF'
-                  maxSize='5MB'
-                  types={['application/pdf']}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FileUpload
+                  values={values}
+                  fieldName='identity_card'
+                  setFieldValue={setFieldValue}
+                  label="Copie de la carte d'identité nationale"
+                  innerLabel='Cliquez ici pour Télecharger le Recto et le Verso'
                 />
               </Grid>
             </Grid>
@@ -217,4 +202,4 @@ const Trainee = () => {
   );
 };
 
-export default Trainee;
+export default Member;

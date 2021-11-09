@@ -16,6 +16,8 @@ import Testimonies from '../pages/testimonies/testimonies';
 import TestimoniesStaff from '../pages/staff/testimonies/testimonies';
 import Vote4Love from '../pages/vote4love/vote4love';
 import Votes from '../pages/staff/votes/votes';
+import Member from '../pages/joinUs/member/member';
+import Members from '../pages/staff/members/members';
 
 export default [
   {
@@ -30,6 +32,11 @@ export default [
   {
     path: '/profile',
     component: Profile,
+    auth: true,
+  },
+  {
+    path: '/join-us/member',
+    component: Member,
     auth: true,
   },
   {
@@ -92,6 +99,11 @@ export default [
   {
     path: '/staff/messages',
     component: Messages,
+    staff: true,
+  },
+  {
+    path: '/staff/members',
+    component: Members,
     staff: true,
   },
   {

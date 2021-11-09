@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useSnapshot } from 'valtio';
@@ -12,7 +12,22 @@ const JoinUs = () => {
   const blocks = [
     {
       path: '/join-us/member',
-      label: 'Adhérent',
+      label: (
+        <div style={{ textAlign: 'center' }}>
+          Adhérent
+          <br />
+          <span
+            style={{
+              fontSize: 20,
+              marginTop: 15,
+              display: 'block',
+              opacity: 0.6,
+            }}
+          >
+            option payante
+          </span>
+        </div>
+      ),
       auth: true,
     },
     {

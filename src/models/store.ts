@@ -1,4 +1,5 @@
 import {
+  IMember,
   IMessage,
   IPetition,
   IPoints,
@@ -29,6 +30,12 @@ export interface IPetitonStore {
   petitions: IPetition[];
   fetched: boolean;
   setPetitions: (petitions: IPetition[]) => void;
+}
+
+export interface IMemberStore {
+  members: IMember[];
+  fetched: boolean;
+  setMembers: (members: IMember[]) => void;
 }
 
 export interface IVolunteerStore {

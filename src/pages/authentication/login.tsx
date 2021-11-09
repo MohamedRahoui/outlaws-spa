@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 import Axios from '../../helpers/axios';
 import { toast } from 'react-toastify';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 const Login = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const history = useHistory();

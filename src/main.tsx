@@ -7,6 +7,12 @@ import { Router } from 'react-router-dom';
 import history from './helpers/history';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
+import { HelmetProvider } from 'react-helmet-async';
+import ReactGA from 'react-ga';
+
+if (import.meta.env.VITE_GOOGLE_ANALYTICS) {
+  ReactGA.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS);
+}
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY,
@@ -21,9 +27,11 @@ Sentry.init({
 ReactDOM.render(
   <React.StrictMode>
     <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_KEY}>
-      <Router history={history}>
-        <App />
-      </Router>
+      <HelmetProvider>
+        <Router history={history}>
+          <App />
+        </Router>
+      </HelmetProvider>
     </GoogleReCaptchaProvider>
   </React.StrictMode>,
   document.getElementById('root')

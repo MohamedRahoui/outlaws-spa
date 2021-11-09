@@ -1,6 +1,7 @@
 import { proxy } from 'valtio';
 import { getUser, logout, login } from '../helpers/user';
 import {
+  IMemberStore,
   IMessageStore,
   IPetitonStore,
   IStore,
@@ -49,6 +50,15 @@ const petitionsStore = proxy<IPetitonStore>({
   setPetitions: (petitions) => {
     petitionsStore.fetched = true;
     petitionsStore.petitions = petitions || [];
+  },
+});
+
+const membersStore = proxy<IMemberStore>({
+  members: [],
+  fetched: false,
+  setMembers: (members) => {
+    membersStore.fetched = true;
+    membersStore.members = members || [];
   },
 });
 
@@ -118,4 +128,5 @@ export {
   testimoniesStore,
   testimoniesStaffStore,
   votesStore,
+  membersStore,
 };

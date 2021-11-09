@@ -3,7 +3,6 @@ import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import RouterComponent from './router';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useRouteMatch, useLocation } from 'react-router-dom';
 import { store } from './store';
 import { useSnapshot } from 'valtio';
@@ -11,7 +10,8 @@ import { checkLogin, hasStaff } from './helpers/user';
 import StaffHeader from './components/staff/header/header';
 import StaffDrawer from './components/staff/drawer/drawer';
 import { useEffect } from 'react';
-
+import ReactGA from 'react-ga';
+import { injectStyle } from 'react-toastify/dist/inject-style';
 let theme = createTheme({
   palette: {
     primary: {
@@ -54,7 +54,13 @@ function App() {
   });
   const snap = useSnapshot(store);
   useEffect(() => {
+    injectStyle();
+  }, []);
+  useEffect(() => {
     checkLogin(snap);
+    if (import.meta.env.VITE_GOOGLE_ANALYTICS) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
   }, [location]);
   if (hasStaff(snap.user) && staffPage)
     return (

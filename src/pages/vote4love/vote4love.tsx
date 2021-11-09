@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import Axios from '../../helpers/axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 
 const Vote4Love = () => {

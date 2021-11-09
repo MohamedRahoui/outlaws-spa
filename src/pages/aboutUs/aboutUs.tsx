@@ -9,7 +9,7 @@ import AYA from '../../../assets/img/team/aya.png';
 import GHIZLANE from '../../../assets/img/team/ghizlane.png';
 import NARJIS from '../../../assets/img/team/narjis.jpeg';
 import OUTLAWS from '../../../assets/img/outlaw.png';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const AboutUs = () => {
   const [tab, setTab] = useState('outlaws');

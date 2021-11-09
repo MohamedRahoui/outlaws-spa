@@ -10,17 +10,17 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box } from '@mui/system';
-import { IPetition } from '../../../../models/data';
+import { IMember } from '../../../../models/data';
 
 const FilesDialog = ({
   handleClose,
   open,
-  petition,
+  member,
   files,
 }: {
   open: boolean;
   handleClose: () => void;
-  petition: IPetition | null;
+  member: IMember | null;
   files: string[];
 }) => {
 
@@ -37,7 +37,7 @@ const FilesDialog = ({
             <CloseIcon />
           </IconButton>
           <Typography sx={{ ml: 2, flex: 1 }} variant='h6' component='div'>
-            {petition?.firstname} {petition?.lastname}
+            {member?.name}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -55,7 +55,7 @@ const FilesDialog = ({
             const fileNames = [
               "Carte d'identité recto",
               "Carte d'identité verso",
-              'Signature manuscrite',
+              'Photo',
             ];
             return (
               <ImageListItem

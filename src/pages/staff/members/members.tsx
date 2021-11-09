@@ -5,22 +5,19 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useSnapshot } from 'valtio';
 import Axios from '../../../helpers/axios';
-import { IPetition } from '../../../models/data';
-import { petitionsStore } from '../../../store';
+import { IMember } from '../../../models/data';
+import { membersStore } from '../../../store';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { toast } from 'react-toastify';
-import fileDownload from 'js-file-download';
 
-const Petitions = () => {
+const Members = () => {
   const [loading, setLoading] = useState(false);
   const [downloadLoading, setDownloadLoading] = useState(false);
   const [fileLoading, setFileLoading] = useState(false);
   const [openFileDialog, setOpenFileDialog] = useState(false);
-  const [selectedPetiton, setSelectedPetiton] = useState<IPetition | null>(
-    null
-  );
+  const [selectedPetiton, setSelectedPetiton] = useState<IMember | null>(null);
   const [files, setFiles] = useState<string[]>([]);
-  const snap = useSnapshot(petitionsStore);
+  const snap = useSnapshot(membersStore);
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   useEffect(() => {
@@ -28,11 +25,11 @@ const Petitions = () => {
   }, [executeRecaptcha]);
 
   const FilesDialog = lazy(() => import('./filesDialog/filesDialog'));
-  const getFiles = async (id: IPetition['id']): Promise<[]> => {
+  const getFiles = async (id: IMember['id']): Promise<[]> => {
     if (!executeRecaptcha) return [];
-    const recaptcha = await executeRecaptcha('fetchPetitionFiles' as string);
+    const recaptcha = await executeRecaptcha('fetchMemberFiles' as string);
     try {
-      const resp = await Axios.get(`petitions/files/${id}`, {
+      const resp = await Axios.get(`members/files/${id}`, {
         headers: {
           'X-RECAPTCHA': recaptcha,
         },
@@ -49,7 +46,7 @@ const Petitions = () => {
     setFiles([]);
   };
 
-  const handleFilesDialogOpen = async (petiton: IPetition) => {
+  const handleFilesDialogOpen = async (petiton: IMember) => {
     setSelectedPetiton(petiton);
     setFileLoading(true);
     const files = await getFiles(petiton.id);
@@ -67,9 +64,9 @@ const Petitions = () => {
     id: string
   ) => {
     if (!executeRecaptcha) return [];
-    const recaptcha = await executeRecaptcha('validatePetiton' as string);
+    const recaptcha = await executeRecaptcha('validateMember' as string);
     const validated = await Axios.post(
-      `petitions/validate`,
+      `members/validate`,
       {
         id,
         validate: event.target.checked,
@@ -80,29 +77,24 @@ const Petitions = () => {
         },
       }
     ).catch();
-    if (validated) toast.success('Pétition modifié');
+    if (validated) toast.success('Adhérant modifié');
   };
 
   const columns: GridColDef[] = [
-    { field: 'firstname', headerName: 'Prénom', minWidth: 130, flex: 1 },
-    { field: 'lastname', headerName: 'Nom', minWidth: 130, flex: 1 },
+    { field: 'name', headerName: 'Nom', minWidth: 130, flex: 1 },
     { field: 'email', headerName: 'Email', minWidth: 130, flex: 1 },
+    { field: 'phone', headerName: 'N° de Tel', minWidth: 130, flex: 1 },
+    { field: 'social', headerName: 'Social', minWidth: 130, flex: 1 },
+    { field: 'subscription', headerName: 'Abonnement', minWidth: 130, flex: 1 },
     {
       field: 'address',
       headerName: 'Adresse',
       minWidth: 130,
       flex: 1,
     },
-    { field: 'cin', headerName: 'CIN', minWidth: 130, flex: 1 },
-    {
-      field: 'electoral_number',
-      headerName: 'N° electoral',
-      minWidth: 130,
-      flex: 1,
-    },
     {
       field: 'show_file',
-      headerName: "Carte d'identité et signature",
+      headerName: "Carte d'identité et Photo",
       width: 130,
       flex: 1,
       align: 'center',
@@ -110,7 +102,7 @@ const Petitions = () => {
         return (
           <LoadingButton
             size='small'
-            onClick={() => handleFilesDialogOpen(params.row as IPetition)}
+            onClick={() => handleFilesDialogOpen(params.row as IMember)}
             loading={fileLoading && selectedPetiton?.id === params.row.id}
           >
             <VisibilityIcon />
@@ -138,39 +130,20 @@ const Petitions = () => {
     if (!executeRecaptcha) return;
     if (!snap.fetched) {
       setLoading(true);
-      const recaptcha = await executeRecaptcha('fetchPetitions' as string);
-      Axios.get('petitions', {
+      const recaptcha = await executeRecaptcha('fetchMembers' as string);
+      Axios.get('members', {
         headers: {
           'X-RECAPTCHA': recaptcha,
         },
       })
         .then((res) => {
-          petitionsStore.setPetitions(res.data || []);
+          membersStore.setMembers(res.data || []);
           setLoading(false);
         })
         .catch(() => setLoading(false));
     }
   };
 
-  const download = async () => {
-    if (!executeRecaptcha) return;
-    setDownloadLoading(true);
-    const recaptcha = await executeRecaptcha('downloadPetitions' as string);
-    Axios.get('petitions/download', {
-      headers: {
-        'X-RECAPTCHA': recaptcha,
-      },
-      responseType: 'arraybuffer',
-    })
-      .then((res) => {
-        const blob = new Blob([res.data], {
-          type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        });
-        fileDownload(blob, 'petitions.docx');
-        setDownloadLoading(false);
-      })
-      .catch(() => setDownloadLoading(false));
-  };
   return (
     <div style={{ width: '100%' }}>
       <LoadingButton
@@ -178,12 +151,12 @@ const Petitions = () => {
         variant='contained'
         style={{ marginBottom: 15 }}
         loading={downloadLoading}
-        onClick={download}
+        // onClick={download}
       >
-        Télécharger les signatures validées (docx)
+        Scanner un QR Code
       </LoadingButton>
       <DataGrid
-        rows={snap.petitions.map((x) => x)}
+        rows={snap.members.map((x) => x)}
         columns={columns}
         pageSize={10}
         rowsPerPageOptions={[5, 10, 50, 100]}
@@ -195,7 +168,7 @@ const Petitions = () => {
         <FilesDialog
           open={openFileDialog}
           handleClose={handleFilesDialogClose}
-          petition={selectedPetiton}
+          member={selectedPetiton}
           files={files}
         />
       </Suspense>
@@ -203,4 +176,4 @@ const Petitions = () => {
   );
 };
 
-export default Petitions;
+export default Members;
