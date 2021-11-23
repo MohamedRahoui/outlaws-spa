@@ -133,9 +133,7 @@ const Petition = () => {
                 formData.append(`${key}_${i + 1}`, file);
               });
             } else if (key === 'signature') {
-              const file = new File([value], 'signature.png', {
-                type: 'image/png',
-              });
+              const file = value
               formData.append('signature', file);
             } else {
               formData.append(key, value);
