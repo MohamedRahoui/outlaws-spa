@@ -17,6 +17,7 @@
       gap: $desktop-spacing;
       flex-wrap: wrap;
       margin-left: $desktop-spacing * 2;
+      color: white;
       @include phone {
         display: none;
       }

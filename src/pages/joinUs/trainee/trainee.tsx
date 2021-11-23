@@ -74,14 +74,14 @@ const Trainee = () => {
   return (
     <div className={ST.container}>
       <Helmet>
-        <title>Demande de stage - {appName}</title>
+        <title>Demander un stage ou un emploi - {appName}</title>
         <meta name='keywords' content={'Demande de stage, ' + baseKeywords} />
         <meta
           name='description'
           content={'Demande de stage , ' + baseDescription}
         />
       </Helmet>
-      <div className={ST.heading}>Effectuer un stage</div>
+      <div className={ST.heading}>Demander un stage ou un emploi</div>
       <Formik
         validateOnChange={true}
         initialValues={{

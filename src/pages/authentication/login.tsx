@@ -69,8 +69,7 @@ const Login = () => {
           </p>
           <img src={Divider} className={ST.loginDivider} />
           <p>
-            Pour vous connecter ou vous inscrire, continuez avec Google ou
-            Facebook.
+            Pour vous connecter ou vous inscrire, utilisez votre compte Google.
             <br />
             <small>Connexion et Inscription sans formulaire à remplir.</small>
           </p>
@@ -91,9 +90,9 @@ const Login = () => {
                 </Box>
               )}
             />
-            <Box sx={{ boxShadow: 4 }} className={ST.loginBtn}>
+            {/* <Box sx={{ boxShadow: 4 }} className={ST.loginBtn}>
               <img src={FacebookLogin} />
-            </Box>
+            </Box> */}
           </div>
         </div>
       </div>

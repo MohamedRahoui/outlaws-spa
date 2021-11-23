@@ -1,10 +1,10 @@
 $dark: #151516;
 $primary-color: #f31800;
-$text-color:  #CFCFCF;
+$text-color: #cfcfcf;
 $screen-desktop: 992px;
 $desktop-spacing: 30px;
 $mobile-spacing: 10px;
-$font-family: 'Lato', sans-serif;
+$font-family: 'Rubik', sans-serif;
 $text-heading: 34px;
 $text-heading-mobile: 25px;
 $text-regular: 18px;
@@ -46,6 +46,7 @@ $text-light-color: #747474;
   text-align: center;
   text-transform: uppercase;
   margin-bottom: $desktop-spacing;
+  color: white;
   @include phone {
     font-size: $text-heading-mobile;
     margin-bottom: $mobile-spacing;

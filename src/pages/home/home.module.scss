@@ -16,6 +16,7 @@
     h1 {
       font-size: $text-heading + 5;
       line-height: $text-heading + 9;
+      color: white;
       @include text-bold;
     }
   }
@@ -39,6 +40,7 @@
     h1 {
       font-size: $text-regular;
       @include text-bold;
+      color: white;
     }
     p {
       line-height: $text-small * 1.5;

@@ -38,7 +38,11 @@
         text-align: center;
       }
       @include spacing(margin-right);
-    //   @include spacing(margin-bottom);
+      //   @include spacing(margin-bottom);
     }
+  }
+  strong {
+    color: white;
+    font-weight: 500;
   }
 }

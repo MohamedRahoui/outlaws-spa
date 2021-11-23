@@ -141,7 +141,7 @@ const TestimonyModal = ({
                 </Grid>
                 <br />
                 <DialogContentText>
-                  Une votre ton témoignage validé par notre équipe, vous pourrez
+                  Une fois votre ton témoignage validé par notre équipe, vous pourrez
                   le voir dans cette page et peut-être même sur nos réseaux
                   sociaux.
                 </DialogContentText>

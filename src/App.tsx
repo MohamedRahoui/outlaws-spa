@@ -31,7 +31,7 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Lato, sans-serif',
+    fontFamily: 'Rubik, sans-serif',
   },
 });
 let staffTheme = createTheme({
@@ -44,7 +44,7 @@ let staffTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Lato, sans-serif',
+    fontFamily: 'Rubik, sans-serif',
   },
 });
 function App() {

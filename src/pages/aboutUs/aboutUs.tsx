@@ -5,10 +5,9 @@ import LEILA from '../../../assets/img/team/leila.png';
 import SONIA from '../../../assets/img/team/sonia.png';
 import KARIMA from '../../../assets/img/team/karima.png';
 import KARIMAR from '../../../assets/img/team/karima-r.png';
-import AYA from '../../../assets/img/team/aya.png';
 import GHIZLANE from '../../../assets/img/team/ghizlane.png';
 import NARJIS from '../../../assets/img/team/narjis.jpeg';
-import OUTLAWS from '../../../assets/img/outlaw.png';
+import MANAR from '../../../assets/img//team/manar.png';
 import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
 const AboutUs = () => {
@@ -48,11 +47,11 @@ const AboutUs = () => {
               l&rsquo;arrestation de la journaliste Hajar Raissouni pour &laquo;
               avortement ill&eacute;gal &raquo; et &laquo; relations sexuelles
               hors mariage &raquo;, &agrave; la fin de l&rsquo;&eacute;t&eacute;
-              2019. Nous avons mobilis&eacute; des milliers personnes autour
+              2019. Nous avons mobilis&eacute; des milliers de personnes autour
               d&rsquo;un manifeste intitul&eacute; le &laquo; Manifeste des 490
               &raquo; en r&eacute;f&eacute;rence &agrave; l&rsquo;article 490 du
               Code p&eacute;nal marocain qui punit les relations sexuelles hors
-              mariage, r&eacute;dig&eacute; par Leila Slimani et Sonia Terrab et
+              mariage, r&eacute;dig&eacute; par Sonia Terrab et Leila Slimani et
               qui d&eacute;bute ainsi : &laquo; Nous, citoyennes et citoyens
               marocains, d&eacute;clarons que nous sommes hors-la-loi &raquo;.
             </p>
@@ -61,10 +60,10 @@ const AboutUs = () => {
               b&eacute;n&eacute;fice d&rsquo;une gr&acirc;ce royale salutaire
               qui a insuffl&eacute; une vague d&rsquo;espoir dans le pays. Mais
               le Maroc reste rempli d&rsquo;autres Hajar&hellip; Et un mouvement
-              est n&eacute;, port&eacute; par Narjis Benazzou, Karima Nadir,
-              Ghizlane Mamouni, Karima Rochdi et toutes celles et ceux qui ont
-              fait un bout de chemin avec nous ou qui nous ont rejoints. Pour
-              nous, c&rsquo;est le d&eacute;but du combat vers un objectif
+              est n&eacute;, port&eacute; également par Narjis Benazzou, Karima
+              Nadir, Ghizlane Mamouni, Karima Rochdi et toutes celles et ceux
+              qui ont fait un bout de chemin avec nous ou qui nous ont rejoint.
+              Pour nous, c&rsquo;est le d&eacute;but du combat vers un objectif
               simple, changer la loi pour&nbsp;:
             </p>
             <p>
@@ -92,6 +91,12 @@ const AboutUs = () => {
             <p>
               Notre mot d&rsquo;ordre : &laquo; toutes et tous hors-la-loi
               jusqu&rsquo;&agrave; ce que la loi change&nbsp;!&nbsp;&raquo;.
+            </p>
+            <p>
+              <i style={{ fontStyle: 'italic', fontWeight: 'bolder' }}>
+                Le collectif 490 a été récompensé par le « Prix Simone de
+                Beauvoir pour la liberté des femmes », en janvier 2020 à Paris.
+              </i>
             </p>
           </div>
         )}
@@ -211,6 +216,7 @@ const AboutUs = () => {
         )}
         {tab === 'team' && (
           <div>
+            <br />
             <div className={ST.teamMember}>
               <div className={ST.name}>
                 <img src={SONIA} alt='Sonia TERRAB' />
@@ -429,7 +435,7 @@ const AboutUs = () => {
                 </u>
               </p>
               <p>
-                Narjis est m&eacute;decin sp&eacute;cialis&eacute;e en biologie
+                Narjis est m&eacute;decin sp&eacute;cialiste en biologie
                 m&eacute;dicale. Dans son laboratoire, elle chapeaute une
                 &eacute;quipe de jeunes femmes dynamiques et consciencieuses. En
                 plus de sa formation scientifique, son parcours &agrave;
@@ -466,13 +472,19 @@ const AboutUs = () => {
                 </u>
               </p>
               <p>
-                J'ai rejoint le mouvement Morrocan Outlaws d&egrave;s que j'ai
-                appris son existence sans vraiment me poser de questions. Mon
-                pays a besoin de femmes et d'hommes courageux, qui sont &agrave;
-                l'&eacute;coute sans juger et qui contribueront, j'en suis
-                s&ucirc;re, &agrave; ce que les jeunes g&eacute;n&eacute;rations
-                puissent enfin jouir de leurs libert&eacute;s compl&egrave;tes
-                sans avoir peur ni honte.
+                J'ai &eacute;t&eacute; scandalis&eacute;e par l'affaire de la
+                jeune journaliste H.R arret&eacute;e puis examin&eacute;e de
+                force dans un h&ocirc;pital public pour chercher des preuves de
+                sa perte de virginit&eacute; et de son IVG. J'ai sign&eacute; le
+                manifeste des hors la loi car je savais qu'il ne s'agissait ni
+                de la premi&egrave;re ni de la derni&egrave;re femme au Maroc
+                humili&eacute;e et emprison&eacute;e pour relations sexuelles
+                hors mariage et avortement. Et depuis je milite aupr&egrave;s
+                d'une &eacute;quipe devou&eacute;e pour faire tomber ces Lois
+                moyen&acirc;geuses. Je suis s&ucirc;re que gr&acirc;ce &agrave;
+                des femmes et des hommes courageux et entreprenants on arrivera
+                &agrave; faire entendre la voix des jeunes marocains
+                assoif&eacute;s de libert&eacute;.
               </p>
             </div>
             <div className={ST.teamMember}>
@@ -623,87 +635,7 @@ const AboutUs = () => {
             </div>
             <div className={ST.teamMember}>
               <div className={ST.name}>
-                <img src={AYA} alt='Aya KARIM' />
-                <div className={ST.label}>Aya KARIM</div>
-              </div>
-              <p>
-                <u>
-                  <strong>
-                    <em>Qui est Aya&nbsp;?</em>
-                  </strong>
-                </u>
-              </p>
-              <p>
-                Aya est une jeune femme de 22 ans dipl&ocirc;m&eacute;e en
-                Sciences Politiques et ayant suivi des formations en
-                Communication Campaign/Media assur&eacute;es par la Fondation
-                Thomson Reuters. Elle a depuis son tr&egrave;s jeune &acirc;ge
-                rejoint la soci&eacute;t&eacute; civile en tant que
-                f&eacute;ministe panafricaine et activiste pour les droits des
-                SGM en plus d&rsquo;avoir travaill&eacute; dans le consulting
-                social.
-              </p>
-              <p>
-                Aya s&rsquo;int&eacute;resse essentiellement aux questions
-                relatives aux droits humains et &agrave; la participation active
-                des jeunes en politique ainsi que leur implication dans le
-                travail associatif. Elle est d&rsquo;ailleurs Ministre&nbsp;de
-                la&nbsp;Solidarit&eacute;, du&nbsp;D&eacute;veloppement Social,
-                de l'&Eacute;galit&eacute; et de la Famille aupr&egrave;s du
-                Gouvernement Parall&egrave;le des Jeunes dans la r&eacute;gion
-                Rabat-Sal&eacute;-Kenitra.
-              </p>
-              <p>
-                &nbsp;
-                <u>
-                  <strong>
-                    <em>
-                      Qu&rsquo;est-ce qui t&rsquo;as pouss&eacute;e &agrave;
-                      rejoindre{' '}
-                    </em>
-                  </strong>
-                </u>
-                <u>
-                  <strong>
-                    <em>Moroccan</em>
-                  </strong>
-                </u>
-                <u>
-                  <strong>
-                    <em> Outlaws&nbsp;?</em>
-                  </strong>
-                </u>
-              </p>
-              <p>
-                J&rsquo;ai rejoint le Collectif 490 parce que je suis une jeune
-                femme marocaine qui a envie de se faire entendre et qui veut
-                faire changer les choses. Le travail des Moroccan Outlaws est un
-                r&eacute;el vecteur de changement qui apporte des remaniements
-                probants sur le plan societal et l&eacute;gislatif. Pour moi,
-                aucun autre organisme marocain ne repr&eacute;sente mieux la
-                jeunesse marocaine et notre soif de libert&eacute;. Faire partie
-                de l&rsquo;&eacute;quipe m&rsquo;a appris la r&eacute;silience
-                et la force. &Ecirc;tre une hors-la-loi ne consiste pas
-                seulement &agrave; oser contester la loi, il s'agit de surmonter
-                les contraintes structurelles des libert&eacute;s individuelles
-                &agrave; l'aide d'instruments l&eacute;gislatifs.
-              </p>
-              <p>
-                Voir ce mouvement in&eacute;dit militer publiquement pour la
-                libert&eacute; sexuelle et &agrave; la r&eacute;forme des lois
-                draconiennes restreignant les libert&eacute;s, obtenir le
-                soutien de milliers de marocain.e.s me donne constamment de
-                l'espoir. L&rsquo;espoir d&rsquo;un Maroc pluriel,
-                tol&eacute;rant et &eacute;galitaire. Mon r&ecirc;ve de vivre
-                dans un pays qui donne &agrave; tou.te.s ses citoyen.ne.s la
-                possibilit&eacute; de s'&eacute;panouir et de vivre dans la
-                dignit&eacute; se concr&eacute;tise chaque jour gr&acirc;ce au
-                combat men&eacute; par les Outlaws.
-              </p>
-            </div>
-            <div className={ST.teamMember}>
-              <div className={ST.name}>
-                <img src={OUTLAWS} alt='Manar SEDKI' />
+                <img src={MANAR} alt='Manar SEDKI' />
                 <div className={ST.label}>Manar SEDKI</div>
               </div>
               <p>

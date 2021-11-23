@@ -9,13 +9,26 @@
     margin-top: 40px;
     color: white;
     width: 100%;
-    .avatar {
-      width: 150px;
-      height: 150px;
-      display: block;
-      margin: auto;
-      margin-bottom: 20px;
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+    .avatarWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .avatar {
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin-bottom: 20px;
+      }
+      .memberCard {
+        width: 50px;
+        margin-left: 30px;
+        cursor: pointer;
+      }
     }
+
     .info {
       text-align: center;
       margin-bottom: 20px;
@@ -47,6 +60,9 @@
       margin-bottom: 40px;
       flex-wrap: wrap;
       gap: 20px;
+      .score {
+        margin: auto;
+      }
     }
     .rewards {
       width: 800px;
@@ -59,6 +75,7 @@
       gap: 30px;
       flex-wrap: wrap;
       .rewardWrapper {
+        margin: auto;
         .reward {
           margin: auto;
           position: relative;

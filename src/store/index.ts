@@ -3,6 +3,7 @@ import { getUser, logout, login } from '../helpers/user';
 import {
   IMemberStore,
   IMessageStore,
+  IOrderStore,
   IPetitonStore,
   IStore,
   ITestimonyStore,
@@ -36,11 +37,21 @@ const store = proxy<IStore>({
     currentPoints: 0,
     petitionsInProgress: 0,
     validatedPetitions: 0,
+    orders: [],
   },
   pointsFetched: false,
   setPoints: (points) => {
     store.pointsFetched = true;
     store.points = points;
+  },
+  subscription: {
+    picture: '',
+    expiry: '',
+  },
+  subscriptionFetched: false,
+  setSubscription: (subscription) => {
+    store.subscriptionFetched = true;
+    store.subscription = subscription;
   },
 });
 
@@ -59,6 +70,26 @@ const membersStore = proxy<IMemberStore>({
   setMembers: (members) => {
     membersStore.fetched = true;
     membersStore.members = members || [];
+  },
+  activateSubscription: (id, subscription) => {
+    const index = membersStore.members.findIndex((x) => x.id === id);
+    if (index || index === 0) {
+      if (membersStore.members[index])
+        membersStore.members[index] = {
+          ...membersStore.members[index],
+          subscription,
+        };
+    }
+  },
+  cancelSubscription: (id) => {
+    const index = membersStore.members.findIndex((x) => x.id === id);
+    if (index || index === 0) {
+      if (membersStore.members[index])
+        membersStore.members[index] = {
+          ...membersStore.members[index],
+          subscription: null,
+        };
+    }
   },
 });
 
@@ -98,6 +129,15 @@ const messagesStore = proxy<IMessageStore>({
   },
 });
 
+const ordersStore = proxy<IOrderStore>({
+  orders: [],
+  fetched: false,
+  setOrders: (orders) => {
+    ordersStore.fetched = true;
+    ordersStore.orders = orders || [];
+  },
+});
+
 const testimoniesStore = proxy<ITestimonyStorePublic>({
   testimonies: [],
   fetched: false,
@@ -129,4 +169,5 @@ export {
   testimoniesStaffStore,
   votesStore,
   membersStore,
+  ordersStore,
 };

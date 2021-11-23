@@ -18,6 +18,7 @@ import Vote4Love from '../pages/vote4love/vote4love';
 import Votes from '../pages/staff/votes/votes';
 import Member from '../pages/joinUs/member/member';
 import Members from '../pages/staff/members/members';
+import Orders from '../pages/staff/orders/orders';
 
 export default [
   {
@@ -99,6 +100,11 @@ export default [
   {
     path: '/staff/messages',
     component: Messages,
+    staff: true,
+  },
+  {
+    path: '/staff/orders',
+    component: Orders,
     staff: true,
   },
   {

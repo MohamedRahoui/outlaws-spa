@@ -101,16 +101,16 @@ const Vote4Love = () => {
           <Form className={ST.form}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <MyTextField name='name' label='Full Name (optional)' />
+                <MyTextField name='name' label='الاسم الكامل (اختياري)' />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <MyTextField name='age' label='Age (optional)' />
+                <MyTextField name='age' label='السن (اختياري)' />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <MyTextField name='gender' label='Gender (optional)' />
+                <MyTextField name='gender' label='الجنس (اختياري)' />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <MyTextField name='email' label='Email (optional)' />
+                <MyTextField name='email' label='البريد الإلكتروني (اختياري)' />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <div
@@ -126,7 +126,7 @@ const Vote4Love = () => {
                     marginBottom: 10,
                   }}
                 >
-                  What is Love for you?
+                  شنو هو الحب بالنسبة ليك؟
                 </div>
                 <MyTextField name='love' multiline rows={5} />
               </Grid>
@@ -144,9 +144,9 @@ const Vote4Love = () => {
                     marginBottom: 10,
                   }}
                 >
-                  What is a right to you?
+                  شنو هو الحق بالنسبة ليك؟
                   <br />
-                  and can Love be considered as a right?
+                  واش الحب حق؟
                 </div>
                 <MyTextField multiline rows={4} name='right' />
               </Grid>
@@ -164,9 +164,9 @@ const Vote4Love = () => {
                     marginBottom: 10,
                   }}
                 >
-                  In the Moroccan context where the law condemns love,
+                  في السياق المغربي فين القانون كيعاقب الحب
                   <br />
-                  which one would you choose, love or law?
+                  شنو تختار الحب أو القانون؟
                 </div>
                 <MyTextField multiline rows={4} name='choice' />
               </Grid>
@@ -184,9 +184,9 @@ const Vote4Love = () => {
                     marginBottom: 10,
                   }}
                 >
-                  What are your recommendations for repealing Art.490 of the
-                  Moroccan penal code? <br />
-                  (and/ or Art.489/454/491)
+                  شنو اقتراحاتك لإلغاء الفصل 490 من القانون الجنائي المغربي؟{' '}
+                  <br />
+                  (و/أو الفصول 491/454/489)
                   <br />
                 </div>
                 <MyTextField multiline rows={4} name='recommendation' />

@@ -1,6 +1,11 @@
 import { Button, Switch } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import {
+  DataGrid,
+  GridColDef,
+  GridRowData,
+  GridRowModel,
+} from '@mui/x-data-grid';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useSnapshot } from 'valtio';
@@ -9,7 +14,7 @@ import { IMember } from '../../../models/data';
 import { membersStore } from '../../../store';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { toast } from 'react-toastify';
-
+import moment from 'moment';
 const Members = () => {
   const [loading, setLoading] = useState(false);
   const [downloadLoading, setDownloadLoading] = useState(false);
@@ -19,7 +24,6 @@ const Members = () => {
   const [files, setFiles] = useState<string[]>([]);
   const snap = useSnapshot(membersStore);
   const { executeRecaptcha } = useGoogleReCaptcha();
-
   useEffect(() => {
     fetchPetitons();
   }, [executeRecaptcha]);
@@ -77,7 +81,52 @@ const Members = () => {
         },
       }
     ).catch();
-    if (validated) toast.success('Adhérant modifié');
+    if (validated) toast.success('Adhérent modifié');
+  };
+
+  const activateSubscription = async (memberRow: GridRowModel) => {
+    if (!executeRecaptcha) return [];
+    const recaptcha = await executeRecaptcha('activateSubscription' as string);
+    const subscriptionDate = await Axios.post(
+      `members/activateSubscription`,
+      {
+        id: memberRow?.id,
+      },
+      {
+        headers: {
+          'X-RECAPTCHA': recaptcha,
+        },
+      }
+    ).catch();
+    if (!subscriptionDate?.data) {
+      toast.success('Something went wrong !');
+      return;
+    }
+    membersStore.activateSubscription(
+      memberRow?.id,
+      subscriptionDate?.data || null
+    );
+    toast.success('Abonnement activé');
+  };
+
+  const cancelSubscription = async (memberRow: GridRowModel) => {
+    if (!executeRecaptcha) return [];
+    const recaptcha = await executeRecaptcha('cancelSubscription' as string);
+    const cancelSubscription = await Axios.post(
+      `members/cancelSubscription`,
+      {
+        id: memberRow?.id,
+      },
+      {
+        headers: {
+          'X-RECAPTCHA': recaptcha,
+        },
+      }
+    ).catch();
+    if (cancelSubscription) {
+      membersStore.cancelSubscription(memberRow?.id);
+      toast.success('Abonnement annulé');
+    }
   };
 
   const columns: GridColDef[] = [
@@ -108,6 +157,40 @@ const Members = () => {
             <VisibilityIcon />
           </LoadingButton>
         );
+      },
+    },
+    {
+      field: 'subscription',
+      headerName: 'Adhesion',
+      minWidth: 300,
+      flex: 1,
+      align: 'center',
+      renderCell: (params) => {
+        if (params.row.subscription) {
+          return (
+            <div>
+              <span style={{ marginRight: 10 }}>
+                Depuis <b>{moment(params.row.subscription).format('LL')}</b>
+              </span>
+              <Button
+                size='small'
+                variant='contained'
+                onClick={() => cancelSubscription(params.row)}
+              >
+                Annuler
+              </Button>
+            </div>
+          );
+        } else {
+          return (
+            <Button
+              variant='contained'
+              onClick={() => activateSubscription(params.row)}
+            >
+              Activer un an
+            </Button>
+          );
+        }
       },
     },
     {
@@ -146,7 +229,7 @@ const Members = () => {
 
   return (
     <div style={{ width: '100%' }}>
-      <LoadingButton
+      {/* <LoadingButton
         size='small'
         variant='contained'
         style={{ marginBottom: 15 }}
@@ -154,7 +237,7 @@ const Members = () => {
         // onClick={download}
       >
         Scanner un QR Code
-      </LoadingButton>
+      </LoadingButton> */}
       <DataGrid
         rows={snap.members.map((x) => x)}
         columns={columns}
@@ -164,6 +247,7 @@ const Members = () => {
         loading={loading}
         autoPageSize
       />
+      <div style={{ display: 'none' }}>{snap.members[0]?.subscription}</div>
       <Suspense fallback={<div></div>}>
         <FilesDialog
           open={openFileDialog}

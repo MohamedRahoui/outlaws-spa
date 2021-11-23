@@ -74,18 +74,18 @@ export type IVolunteer = {
  */
 
 export type IMember = {
-  id: string
-  name: string
-  email: string
-  phone: string
-  birth: string
-  address: string
-  social: string | null
-  subscription: Date | null
-  valid: boolean
-  userId: string
-  createdAt: Date
-  updatedAt: Date
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  birth: string;
+  address: string;
+  social: string | null;
+  subscription: Date | null;
+  valid: boolean;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 /**
@@ -118,25 +118,57 @@ export type IReward = {
   archived: boolean;
 };
 
+/**
+ * Model Order
+ */
+
+export type IOrder = {
+  id: number;
+  rewardId: number;
+  userId: string;
+  email: string;
+  phone: string;
+  name: string;
+  address: string;
+  price: number;
+  accepted: boolean;
+  acceptedAt: Date | null;
+  sent: boolean;
+  sentAt: Date | null;
+  received: boolean;
+  receivedAt: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+  canceled: boolean;
+  reward?: IReward;
+};
+
 export type IPoints = {
   validatedPetitions: number;
   petitionsInProgress: number;
   currentPoints: number;
+  orders: IOrder[];
+  isMember: boolean;
+};
+
+export type ISubscription = {
+  expiry: string;
+  picture: string;
 };
 
 export type ITrainee = {
-  id: string
-  name: string
-  email: string
-  phone: string
-  birth: string
-  address: string
-  degree: string
-  speciality: string
-  availability: string
-  letter: string
-  social: string | null
-  userId: string | null
-  createdAt: Date
-  updatedAt: Date
-}
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  birth: string;
+  address: string;
+  degree: string;
+  speciality: string;
+  availability: string;
+  letter: string;
+  social: string | null;
+  userId: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};

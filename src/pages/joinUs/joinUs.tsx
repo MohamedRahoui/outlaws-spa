@@ -36,7 +36,22 @@ const JoinUs = () => {
     },
     {
       path: '/join-us/trainee',
-      label: 'Stagiaire',
+      label:(
+        <div style={{ textAlign: 'center' }}>
+          Employé
+          <br />
+          <span
+            style={{
+              fontSize: 20,
+              marginTop: 15,
+              display: 'block',
+              opacity: 0.6,
+            }}
+          >
+            ou Stagiaire
+          </span>
+        </div>
+      ),
     },
   ];
   const handlePath = (path: string, auth?: boolean) => {

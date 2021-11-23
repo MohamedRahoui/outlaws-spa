@@ -40,7 +40,7 @@ const ContactUs = () => {
     reason: Yup.string()
       .required('Votre choix est requis')
       .oneOf(
-        ['Presse', 'R.Académique', 'Autres', 'Bug'],
+        ['Help', 'Presse', 'R.Académique', 'Autres', 'Bug'],
         'Votre choix est requis'
       ),
   });
@@ -116,6 +116,7 @@ const ContactUs = () => {
                     onChange={handleChange}
                     name='reason'
                   >
+                    <MenuItem value='Help'>Demander de l'aide</MenuItem>
                     <MenuItem value='Presse'>Demande presse</MenuItem>
                     <MenuItem value='R.Académique'>
                       Recherche académique

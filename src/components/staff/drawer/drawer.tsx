@@ -13,6 +13,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import MessageIcon from '@mui/icons-material/Message';
 import ShareIcon from '@mui/icons-material/Share';
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSnapshot } from 'valtio';
 import { store } from '../../../store';
 import { useHistory, useRouteMatch } from 'react-router-dom';
@@ -53,7 +54,7 @@ const DrawerContent = () => {
     },
     {
       path: '/staff/members',
-      label: 'Adhérants',
+      label: 'Adhérents',
       Icon: <GroupIcon />,
     },
     {
@@ -75,6 +76,11 @@ const DrawerContent = () => {
       path: '/staff/messages',
       label: 'Messages',
       Icon: <MessageIcon />,
+    },
+    {
+      path: '/staff/orders',
+      label: 'Commandes',
+      Icon: <ShoppingCartIcon />,
     },
   ];
   return (

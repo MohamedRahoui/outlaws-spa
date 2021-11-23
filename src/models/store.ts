@@ -1,9 +1,11 @@
 import {
   IMember,
   IMessage,
+  IOrder,
   IPetition,
   IPoints,
   IReward,
+  ISubscription,
   ITestimony,
   ITrainee,
   IVolunteer,
@@ -24,6 +26,9 @@ export interface IStore {
   points: IPoints;
   setPoints: (points: IPoints) => void;
   pointsFetched: boolean;
+  subscription: ISubscription;
+  setSubscription: (subscription: ISubscription) => void;
+  subscriptionFetched: boolean;
 }
 
 export interface IPetitonStore {
@@ -36,6 +41,11 @@ export interface IMemberStore {
   members: IMember[];
   fetched: boolean;
   setMembers: (members: IMember[]) => void;
+  activateSubscription: (
+    id: IMember['id'],
+    subscription: IMember['subscription']
+  ) => void;
+  cancelSubscription: (id: IMember['id']) => void;
 }
 
 export interface IVolunteerStore {
@@ -60,6 +70,12 @@ export interface IMessageStore {
   messages: IMessage[];
   fetched: boolean;
   setMessages: (messages: IMessage[]) => void;
+}
+
+export interface IOrderStore {
+  orders: IOrder[];
+  fetched: boolean;
+  setOrders: (orders: IOrder[]) => void;
 }
 
 export interface ITestimonyStore {

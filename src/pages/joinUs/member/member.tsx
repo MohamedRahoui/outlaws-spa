@@ -15,8 +15,11 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../../helpers/tags';
+import { Suspense, useState } from 'react';
+import Transfer from '../../../components/transfer/transfer';
 const Member = () => {
   const history = useHistory();
+  const [openTransfer, setOpenTransfer] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const formValidation = Yup.object({
     name: Yup.string()
@@ -82,7 +85,7 @@ const Member = () => {
           content={'Devenir adhérent, ' + baseDescription}
         />
       </Helmet>
-      <div className={ST.heading}>Devenir adhérant</div>
+      <div className={ST.heading}>Devenir adhérent</div>
       <Formik
         validateOnChange={true}
         initialValues={{
@@ -124,7 +127,8 @@ const Member = () => {
           })
             .then(() => {
               resetForm();
-              history.push('/profile');
+              setOpenTransfer(true);
+              // history.push('/profile');
               toast.success('Votre demande est envoyé');
               setSubmitting(false);
             })
@@ -198,6 +202,13 @@ const Member = () => {
           </Form>
         )}
       </Formik>
+      <Suspense fallback={<span></span>}>
+        <Transfer
+          handleClose={setOpenTransfer}
+          open={openTransfer}
+          mode='payement'
+        />
+      </Suspense>
     </div>
   );
 };

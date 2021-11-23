@@ -38,10 +38,15 @@ body {
 
 :root {
   --toastify-text-color-light: #151516;
-  --toastify-font-family: 'Lato', sans-serif;
+  --toastify-font-family: 'Rubik', sans-serif;
 }
 
 .infinite-scroll-component {
   overflow: unset;
   height: 100%;
+}
+.formAR {
+  .MuiInputLabel-root {
+    font-family: 'Cairo', $font-family !important;
+  }
 }
