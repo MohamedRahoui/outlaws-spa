@@ -48,7 +48,7 @@ const Footer = () => {
             size='small'
             onClick={() => donate()}
           >
-            Faire un don
+            Soutenez-nous
           </Button>
           <div>Collectif 490 (HORS LA LOI)</div>
           <div className='socials'>

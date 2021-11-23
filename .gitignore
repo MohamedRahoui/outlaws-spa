@@ -5,3 +5,4 @@ dist-ssr
 dokku
 *.local
 .env*
+build

@@ -32,7 +32,7 @@ const Transfer = ({
             <CloseIcon />
           </IconButton>
           <Typography sx={{ ml: 2, flex: 1 }} variant='h6' component='div'>
-            {mode === 'donate' ? 'Nous faire un don' : 'Valider votre adhésion'}
+            {mode === 'donate' ? 'Soutenez-nous' : 'Valider votre adhésion'}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -41,7 +41,7 @@ const Transfer = ({
           <img src={Outlaws} alt='Moroccan Outlaws' className={ST.logo} />
           <div className={ST.message}>
             {mode === 'donate'
-              ? 'Soutenez nos actions en faisant un virement vers le compte suivant:'
+              ? 'Vous souhaitez soutenir nos actions? Voici nos coordonnées bancaires:'
               : "Afin activer votre adhésion pour une durée d'une année, veuillez faire un virement de 100Dhs ( 50Dhs pour les étudiants ) vers le compte suivant:"}
           </div>
           <span className={ST.label}>IBAN</span> :{' '}

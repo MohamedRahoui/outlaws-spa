@@ -38,6 +38,7 @@ const store = proxy<IStore>({
     petitionsInProgress: 0,
     validatedPetitions: 0,
     orders: [],
+    isMember: false,
   },
   pointsFetched: false,
   setPoints: (points) => {
