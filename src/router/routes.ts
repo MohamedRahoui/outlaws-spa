@@ -19,6 +19,7 @@ import Votes from '../pages/staff/votes/votes';
 import Member from '../pages/joinUs/member/member';
 import Members from '../pages/staff/members/members';
 import Orders from '../pages/staff/orders/orders';
+import Privacy from '../pages/privacy/privacy';
 
 export default [
   {
@@ -55,6 +56,11 @@ export default [
   {
     path: '/about-us',
     component: AboutUs,
+  },
+  
+  {
+    path: '/privacy',
+    component: Privacy,
   },
   {
     path: '/testimonies',

@@ -7,6 +7,7 @@ import Outlaws from '../../../assets/img/outlaw.png';
 import { Button } from '@mui/material';
 import Transfer from '../transfer/transfer';
 import { Suspense, useState } from 'react';
+import { Link } from 'react-router-dom';
 const Footer = () => {
   const [openDonate, setOpenDonate] = useState(false);
   const openUrl = (link: string) => {
@@ -20,17 +21,17 @@ const Footer = () => {
       <div className='divider'></div>
       <div
         className='madeByMobile'
-        onClick={() => openUrl('https://www.codentype.com')}
+        onClick={() => openUrl('https://www.rhaszare.com')}
       >
         Made with{' '}
         <FavoriteIcon className='heartIcon' color='primary' aria-label='Love' />{' '}
         by
-        <b className='codentype'> CodenType</b>
+        <b className='rhaszare'> Rhaszare</b>
       </div>
       <div className='content'>
         <div
           className='madeBy'
-          onClick={() => openUrl('https://www.codentype.com')}
+          onClick={() => openUrl('https://www.rhaszare.com')}
         >
           Made with{' '}
           <FavoriteIcon
@@ -39,7 +40,7 @@ const Footer = () => {
             aria-label='Love'
           />{' '}
           by
-          <b className='codentype'> CodenType</b>
+          <b className='rhaszare'> Rhaszare</b>
         </div>
         <div className='collectif'>
           <Button
@@ -73,9 +74,12 @@ const Footer = () => {
             />
           </div>
         </div>
-        <div className='stop490'>
-          <img src={Outlaws} alt='Moroccan Outlwas' width='30' />
-          <b>#STOP490</b>
+        <div className='rightSide'>
+          <div className='stop490'>
+            <img src={Outlaws} alt='Moroccan Outlwas' width='30' />
+            <b>#STOP490</b>
+          </div>
+          <Link to='/privacy'>Politique de confidentialit&eacute;</Link>
         </div>
       </div>
       <Suspense fallback={<span></span>}>

@@ -55,7 +55,7 @@ const Vote4Love = () => {
         All languages are accepted <br /> <br />
         Toutes les langues sont acceptées <br /> <br />
         جميع اللغات مقبولة <br /> <br />
-        ⴰⵍⵍ ⵍⴰⵏⴳⵓⴰⴳⴻⵙ ⴰⵔⴻ ⴰⵛⵛⴻpⵜⴻⴷ
+        ⴽⵓⵍ ⵉⵎⵙⴰⵡⴰⵍⵏ ⵜⴰⵡⵇⴱⴰⵍⵏ
       </div>
       <Formik
         validateOnChange={true}

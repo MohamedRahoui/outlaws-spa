@@ -71,7 +71,7 @@ const JoinUs = () => {
           content={'Nous rejoindre, ' + baseDescription}
         />
       </Helmet>
-      <div className={ST.heading}>Nous rejoidnre</div>
+      <div className={ST.heading}>Nous rejoindre</div>
       <div className={ST.subHeading}>
         Vous souhaitez rejoindre notre association en tant que :
       </div>

@@ -1,0 +1,19 @@
+@import '../../theme/vars.scss';
+.container {
+  @include base-container;
+  max-width: 100%;
+  width: 800px;
+  margin: auto;
+  .heading {
+    @include base-heading;
+    margin-bottom: $desktop-spacing;
+  }
+  .text {
+    p {
+      font-size: $text-small;
+      line-height: $text-small + 8;
+      text-align: justify;
+      margin-bottom: 18px;
+    }
+  }
+}

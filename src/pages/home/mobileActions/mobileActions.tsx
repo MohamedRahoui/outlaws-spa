@@ -9,11 +9,6 @@ const MobileActions = ({ ST }: { ST: CSSModuleClasses }) => {
   const history = useHistory();
   const actions = [
     {
-      src: Pen,
-      label: 'Signer la petition.',
-      link: '/petition',
-    },
-    {
       src: Vote4Love,
       label: 'Vote4Love.',
       link: '/vote4love',
@@ -25,14 +20,19 @@ const MobileActions = ({ ST }: { ST: CSSModuleClasses }) => {
       link: '/about-us',
     },
     {
-      src: JoinUs,
-      label: 'Nous rejoindre.',
-      link: '/join-us',
-    },
-    {
       src: Testimony,
       label: 'Témoignages.',
       link: '/testimonies',
+    },
+    {
+      src: Pen,
+      label: 'Signer la petition.',
+      link: '/petition',
+    },
+    {
+      src: JoinUs,
+      label: 'Nous rejoindre.',
+      link: '/join-us',
     },
     {
       src: Contact,

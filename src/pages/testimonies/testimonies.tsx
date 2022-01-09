@@ -104,6 +104,20 @@ const Testimonies = () => {
         <br />
         Nous voulons créer un espace sûr pour que vous puissiez vous manifester
         et nous dire, anonymement, ce qui a fait de vous un hors-la-loi.
+        <br />
+        <br />
+        <small style={{
+          fontStyle: 'italic',
+          lineHeight: '150%',
+          fontSize: '90%',
+          color: 'white',
+          fontWeight: 'bold'
+        }}>
+          All languages are accepted <br />
+          Toutes les langues sont acceptées <br />
+          جميع اللغات مقبولة <br />
+          ⴽⵓⵍ ⵉⵎⵙⴰⵡⴰⵍⵏ ⵜⴰⵡⵇⴱⴰⵍⵏ
+        </small>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}

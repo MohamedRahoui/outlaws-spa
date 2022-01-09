@@ -33,7 +33,7 @@
       .heartIcon {
         margin: -5px 5px 0 5px;
       }
-      .codentype {
+      .rhaszare {
         text-decoration: underline;
         margin-left: 5px;
       }
@@ -61,13 +61,24 @@
         }
       }
     }
-    .stop490 {
-      b {
-        vertical-align: top;
+    .rightSide {
+      .stop490 {
+        float: right;
+        clear: both;
+        b {
+          vertical-align: top;
+        }
+        img {
+          margin-top: -7px;
+          margin-right: 5px;
+        }
       }
-      img {
-        margin-top: -7px;
-        margin-right: 5px;
+      a {
+        color: $text-color;
+        display: block;
+        clear: both;
+        text-decoration: none;
+        margin-top: 35px;
       }
     }
   }
@@ -82,7 +93,7 @@
     .heartIcon {
       margin: -5px 5px 0 5px;
     }
-    .codentype {
+    .rhaszare {
       text-decoration: underline;
       margin-left: 5px;
     }

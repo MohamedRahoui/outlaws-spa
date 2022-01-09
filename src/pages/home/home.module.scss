@@ -52,6 +52,7 @@
     flex-direction: column;
     gap: 20px;
     .mobileAction {
+      cursor: pointer;
       height: 100px;
       background: url('../../../assets/img/sign-btn-bg.svg') no-repeat 50%;
       background-size: cover;

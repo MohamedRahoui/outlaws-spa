@@ -42,7 +42,7 @@ const Transfer = ({
           <div className={ST.message}>
             {mode === 'donate'
               ? 'Vous souhaitez soutenir nos actions? Voici nos coordonnées bancaires:'
-              : "Afin activer votre adhésion pour une durée d'une année, veuillez faire un virement de 100Dhs ( 50Dhs pour les étudiants ) vers le compte suivant:"}
+              : "Afin activer votre adhésion pour une durée d'une année, veuillez faire un virement de 100Dhs ( 50Dhs pour les étudiants ) vers le compte ci-dessous. Ou mieux, nous contacter sur collectif490@gmail.com pour passer nous voir et régler cela en cash. Cela sera l’occasion de faire connaissance et de continuer la lutte ensemble. Bienvenu(e) !"}
           </div>
           <span className={ST.label}>IBAN</span> :{' '}
           <span className={ST.value}>MA64011780000016200001214071</span>
