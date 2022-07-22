@@ -31,7 +31,11 @@
       float: left;
       img {
         width: 150px;
+        height: 170px;
         border-radius: $border-radius;
+        object-fit: cover;
+        margin-bottom: 10px;
+        max-width: 100%;
       }
       .label {
         color: $primary-color;

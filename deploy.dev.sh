@@ -8,4 +8,4 @@ docker push moroccanoutlaws/spa:latest
 # Pull
 # Tag
 # Deploy
-ssh root@front.moroccanoutlaws.com "docker pull moroccanoutlaws/spa:latest; dokku git:from-image spa moroccanoutlaws/spa:latest"
+ssh root@moroccanoutlaws.com "docker pull moroccanoutlaws/spa:latest; docker tag moroccanoutlaws/spa:latest dokku/spa:latest; dokku deploy spa latest"

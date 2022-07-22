@@ -3,10 +3,10 @@ import { useState } from 'react';
 import ST from './aboutUs.module.scss';
 import LEILA from '../../../assets/img/team/leila.png';
 import SONIA from '../../../assets/img/team/sonia.png';
-import KARIMA from '../../../assets/img/team/karima.png';
 import KARIMAR from '../../../assets/img/team/karima-r.png';
 import GHIZLANE from '../../../assets/img/team/ghizlane.png';
-import NARJIS from '../../../assets/img/team/narjis.jpeg';
+import HAKIMA from '../../../assets/img/team/hakima.jpg';
+import NARJIS from '../../../assets/img/team/narjis.jpg';
 import MANAR from '../../../assets/img//team/manar.png';
 import { Helmet } from 'react-helmet-async';
 import { appName, baseDescription, baseKeywords } from '../../helpers/tags';
@@ -60,10 +60,10 @@ const AboutUs = () => {
               b&eacute;n&eacute;fice d&rsquo;une gr&acirc;ce royale salutaire
               qui a insuffl&eacute; une vague d&rsquo;espoir dans le pays. Mais
               le Maroc reste rempli d&rsquo;autres Hajar&hellip; Et un mouvement
-              est n&eacute;, port&eacute; également par Narjis Benazzou, Karima
-              Nadir, Ghizlane Mamouni, Karima Rochdi et toutes celles et ceux
-              qui ont fait un bout de chemin avec nous ou qui nous ont rejoint.
-              Pour nous, c&rsquo;est le d&eacute;but du combat vers un objectif
+              est n&eacute;, port&eacute; également par Narjis Benazzou,
+              Ghizlane Mamouni, Karima Rochdi et toutes celles et ceux qui ont
+              fait un bout de chemin avec nous ou qui nous ont rejoint. Pour
+              nous, c&rsquo;est le d&eacute;but du combat vers un objectif
               simple, changer la loi pour&nbsp;:
             </p>
             <p>
@@ -288,12 +288,12 @@ const AboutUs = () => {
                 d&eacute;but, qu&rsquo;autant de femmes et de jeunes se
                 sentiraient concern&eacute;s et r&eacute;pondraient avec autant
                 de force &agrave; notre appel. Nous poursuivons depuis le combat
-                avec Narjis, Karima N., Ghizlane, Karima R. et toutes celles et
-                ceux qui nous aident au quotidien, car l&rsquo;article 490 et
-                les autres articles liberticides du code p&eacute;nal continuent
-                de briser des vies, d&rsquo;enfermer derri&egrave;re les
-                barreaux des prison et les murs du silence des femmes victime,
-                de les condamner &agrave; la double peine.
+                avec Narjis, Ghizlane, Karima R. et toutes celles et ceux qui
+                nous aident au quotidien, car l&rsquo;article 490 et les autres
+                articles liberticides du code p&eacute;nal continuent de briser
+                des vies, d&rsquo;enfermer derri&egrave;re les barreaux des
+                prison et les murs du silence des femmes victime, de les
+                condamner &agrave; la double peine.
               </p>
             </div>
             <div className={ST.teamMember}>
@@ -367,53 +367,6 @@ const AboutUs = () => {
             </div>
             <div className={ST.teamMember}>
               <div className={ST.name}>
-                <img src={KARIMA} alt='Karima NADIR' />
-                <div className={ST.label}>Karima NADIR</div>
-              </div>
-              <p>
-                <u>
-                  <strong>
-                    <em>Qui est Karima&nbsp;?</em>
-                  </strong>
-                </u>
-              </p>
-              <p>
-                Karima est une communicante engag&eacute;e. Son excellente
-                ma&icirc;trise de la langue arabe fait d&rsquo;elle la
-                porte-parole du Collectif sur les m&eacute;dias en langue arabe
-                o&ugrave; elle se distingue par son aisance de communication et
-                la virulence de ses propos.
-              </p>
-              <p>
-                <u>
-                  <strong>
-                    <em>
-                      Qu&rsquo;est-ce qui t&rsquo;as pouss&eacute;e &agrave;
-                      rejoindre{' '}
-                    </em>
-                  </strong>
-                </u>
-                <u>
-                  <strong>
-                    <em>Moroccan</em>
-                  </strong>
-                </u>
-                <u>
-                  <strong>
-                    <em> Outlaws&nbsp;?</em>
-                  </strong>
-                </u>
-              </p>
-              <p>
-                J&rsquo;ai assist&eacute; aux premi&egrave;res heures de la
-                cr&eacute;ation de Moroccan Outlaws, notamment en traduisant le
-                manifeste vers l&rsquo;arabe et la darija. je pense
-                fondamentalement qu&rsquo;on ne peu pas faire avancer une
-                soci&eacute;t&eacute; sans lib&eacute;rer ses individus.
-              </p>
-            </div>
-            <div className={ST.teamMember}>
-              <div className={ST.name}>
                 <img src={NARJIS} alt='Narjis BENAZZOU' />
                 <div className={ST.label}>Narjis BENAZZOU</div>
               </div>
@@ -425,7 +378,7 @@ const AboutUs = () => {
                 </u>
                 <u>
                   <strong>
-                    <em>Narjs</em>
+                    <em>Narjis</em>
                   </strong>
                 </u>
                 <u>
@@ -485,6 +438,88 @@ const AboutUs = () => {
                 des femmes et des hommes courageux et entreprenants on arrivera
                 &agrave; faire entendre la voix des jeunes marocains
                 assoif&eacute;s de libert&eacute;.
+              </p>
+            </div>
+            <div className={ST.teamMember}>
+              <div className={ST.name}>
+                <img src={HAKIMA} alt='Hakima Himmich' />
+                <div className={ST.label}>Hakima Himmich</div>
+              </div>
+              <p>
+                <u>
+                  <strong>
+                    <em>Qui est Hakima ?</em>
+                  </strong>
+                </u>
+              </p>
+              <p>
+                Apr&egrave;s des &eacute;tudes de m&eacute;decine &agrave;
+                Paris, Pr Hakima Himmich a &eacute;t&eacute; cheffe du service
+                des maladies infectieuses du CHU Ibn Rochd et enseignante
+                &agrave; la Facult&eacute; de m&eacute;decine de Casablanca. En
+                1988 elle a fond&eacute; l&rsquo;ALCS qui a ce jour est la plus
+                importante association de lutte contre le sida dans la
+                r&eacute;gion MENA, association impliqu&eacute;e dans
+                l'acc&egrave;s au traitement, la d&eacute;fense des droits des
+                personnes vivant avec le VIH, la pr&eacute;vention et le
+                d&eacute;pistage de l'infection &agrave; VIH aupr&egrave;s de
+                populations marginalis&eacute;es et stigmatis&eacute;es. Elle a
+                pr&eacute;sid&eacute; l&rsquo;ALCS jusqu&rsquo;en 2018. De 2012
+                &agrave; juillet 2022 elle a &eacute;t&eacute; pr&eacute;sidente
+                de Coalition Plus, r&eacute;seau regroupant une centaine
+                d&rsquo;associations de lutte contre le sida dans une
+                cinquantaine de pays.
+              </p>
+              <p>
+                Elle a &eacute;t&eacute; membre du Conseil Economique, Social et
+                Environnemental et de la Commission pour le nouveau
+                mod&egrave;le de d&eacute;veloppement
+              </p>
+              <p>
+                <u>
+                  <strong>
+                    <em>
+                      Qu&rsquo;est-ce qui t&rsquo;as pouss&eacute;e &agrave;
+                      rejoindre{' '}
+                    </em>
+                  </strong>
+                </u>
+                <u>
+                  <strong>
+                    <em>Moroccan</em>
+                  </strong>
+                </u>
+                <u>
+                  <strong>
+                    <em> Outlaws&nbsp;?</em>
+                  </strong>
+                </u>
+              </p>
+              <p>
+                J&rsquo;ai toujours &eacute;t&eacute; r&eacute;volt&eacute;e par
+                les in&eacute;galit&eacute;s Femmes/Hommes. A mon retour au
+                Maroc apr&egrave;s mes &eacute;tudes de m&eacute;decine, en
+                1981, je me serais surement engag&eacute;e dans la lutte pour
+                les droits des femmes s&rsquo;il n&rsquo;y avait pas eu
+                l&rsquo;&eacute;pid&eacute;mie de VIH/sida.
+              </p>
+              <p>
+                Je suis avec beaucoup d&rsquo;int&eacute;r&ecirc;t les actions
+                du collectif 490 depuis son initiation par Sonia Terrab et Leila
+                Slimani, J&rsquo;appr&eacute;cie les slogans innovants et
+                l&rsquo;usage que le collectif fait des r&eacute;seaux sociaux
+                qui permettent de parler aux jeunes. Il y a environ un an,
+                j&rsquo;ai &eacute;t&eacute; invit&eacute;e par le Collectif 490
+                &agrave; enregistrer une vid&eacute;o sur ma position par
+                rapport &agrave; cet article liberticide. C&rsquo;est ainsi que
+                j&rsquo;ai rencontr&eacute; pour la premi&egrave;re fois Sonia
+                Terrab et Ghislane Mamouni. Le courant est imm&eacute;diatement
+                pass&eacute; entre nous. Quelques mois apr&egrave;s, la
+                pr&eacute;sidente du Collectif, Narjis Benazzou et les membres
+                du bureau Sonia Terrab et Karima Rochdi, m&rsquo;ont
+                demand&eacute; d&rsquo;&ecirc;tre pr&eacute;sidente
+                d&rsquo;honneur du Collectif, j&rsquo;ai accept&eacute; sans la
+                moindre h&eacute;sitation.{' '}
               </p>
             </div>
             <div className={ST.teamMember}>
